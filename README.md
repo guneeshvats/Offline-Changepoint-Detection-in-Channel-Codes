@@ -4,9 +4,11 @@ In this repo I am tracking the progress of my research related to the offline ch
 
 Literature Review (Research Papers/Journals/Books): 
 1. Selective Review of offline changepoint detection methods.
-2. Book - Fitting functions
-3. Automatic Change-Point Detection in Time Series via Deep Learning
-4. 
+    (i) Reference 1
+   (ii) Reference 2
+3. Book - Fitting functions
+4. Automatic Change-Point Detection in Time Series via Deep Learning
+5. 
 
 
 
