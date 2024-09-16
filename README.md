@@ -7,3 +7,9 @@ Literature Review (Research Papers/Journals/Books):
 2. Book - Fitting functions
 3. Automatic Change-Point Detection in Time Series via Deep Learning
 4. 
+
+
+
+
+Peresentations and write ups: 
+1. https://docs.google.com/presentation/d/1yzx00AFN8aDG7L4OdEDbvaQSgfRj37CbkmYR_34oxAI/edit#slide=id.g28aa7e56430_0_26
