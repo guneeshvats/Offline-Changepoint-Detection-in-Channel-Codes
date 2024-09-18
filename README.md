@@ -8,8 +8,10 @@ In this repository, I am tracking the progress of my research related to offline
 | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | Paper - 1 : Selective Review of Offline Changepoint Detection Methods                        | [Link to paper](https://www.sciencedirect.com/science/article/pii/S0165168419303494)                                                                                                         |
 | Paper - 2 : Automatic Change-Point Detection in Time Series via Deep Learning    | [Link to paper](https://arxiv.org/abs/2211.03860)                                                                                                         |
-| Book - Detection of Abrupt Changes: Theory and Application                       | [Only chapter - 2](https://people.irisa.fr/Michele.Basseville/kniga/kniga.pdf) |
-| Book - Fitting Functions                                                    | -                                                                                                         |
+| Book - 1 : Detection of Abrupt Changes: Theory and Application                       | [Only chapter - 2](https://people.irisa.fr/Michele.Basseville/kniga/kniga.pdf) |
+| Book - 2 : Error Control Coding: Fundamentals and Applications                   | [Link to book](https://pg024ec.wordpress.com/wp-content/uploads/2013/09/error-control-coding-by-shu-lin.pdf)                |
+| Book - 3 : Fitting Functions                                                    | [Link to book]()                                                                                                       |
 | Literature Review Presentation - 1 (about paper - 1)                                                  | [Google Slides](https://docs.google.com/presentation/d/1yzx00AFN8aDG7L4OdEDbvaQSgfRj37CbkmYR_34oxAI/edit#slide=id.g28aa7e56430_0_26) |
+
 
 
