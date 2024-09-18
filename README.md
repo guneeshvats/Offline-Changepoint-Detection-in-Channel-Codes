@@ -6,7 +6,7 @@ In this repository, I am tracking the progress of my research related to offline
 
 | **Title**                                                                        | **Links**                                                                                                 |
 | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Paper - 1 : Selective Review of Offline Changepoint Detection Methods                        | -                                                                                                         |
+| Paper - 1 : Selective Review of Offline Changepoint Detection Methods                        | [Link to paper](https://www.sciencedirect.com/science/article/pii/S0165168419303494)                                                                                                         |
 | Reference 1                                                                      | -                                                                                                         |
 | **Book - Fitting Functions**                                                     | -                                                                                                         |
 | **Automatic Change-Point Detection in Time Series via Deep Learning**            | -                                                                                                         |
