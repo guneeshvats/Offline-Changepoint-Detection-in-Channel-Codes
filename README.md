@@ -17,3 +17,10 @@ In this repository, I am tracking the progress of my research related to offline
 
 ## Code Progress 
 In this section I will track how much I have tried and compared in the code part of this project, Which methods I have tried and which one I am going to use or why one algo is bad. 
+
+
+## About Channel Codes
+
+## Refrences
+
+
