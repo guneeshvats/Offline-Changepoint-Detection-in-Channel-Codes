@@ -37,8 +37,6 @@ Below is a curated list of key papers and books, along with links for deeper ref
 | **Book - 2:** Error Control Coding: Fundamentals and Applications                   | [View Book](https://pg024ec.wordpress.com/wp-content/uploads/2013/09/error-control-coding-by-shu-lin.pdf)|
 | **Book - 3:** Fundamentals of Statistical Signal Processing                         | [View Book]()                                                                                           |
 
-**Literature Review Presentation (Papers 1, 3, 4)**: [Google Slides Presentation](https://docs.google.com/presentation/d/1yzx00AFN8aDG7L4OdEDbvaQSgfRj37CbkmYR_34oxAI/edit#slide=id.g28aa7e56430_0_26)
-
 ---
 
 ## Code Progress 
