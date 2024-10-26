@@ -24,4 +24,4 @@ Literature Review Presentation (Paper - 1,3,4) [Google Slides](https://docs.goog
 In this section I will track how much I have tried and compared in the code part of this project, Which methods I have tried and which one I am going to use or why one algo is bad. 
 
 ## Draft
-
+1. (Selective Review Of Offline Changepoint Detection Methods and Some Info about Derivation of Pd)[https://docs.google.com/presentation/d/1yzx00AFN8aDG7L4OdEDbvaQSgfRj37CbkmYR_34oxAI/edit#slide=id.p]
