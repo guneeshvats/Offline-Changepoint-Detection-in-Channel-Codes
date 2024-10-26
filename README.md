@@ -25,3 +25,4 @@ In this section I will track how much I have tried and compared in the code part
 
 ## Draft
 1. (Selective Review Of Offline Changepoint Detection Methods and Some Info about Derivation of Pd)[https://docs.google.com/presentation/d/1yzx00AFN8aDG7L4OdEDbvaQSgfRj37CbkmYR_34oxAI/edit#slide=id.p]
+2. Literature Review 2 (https://docs.google.com/presentation/d/1Q5Bpr53ahE7VJUO9jEYY8Y5o6oiOsMB28Xdz1r6LM04/edit#slide=id.p)
