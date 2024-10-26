@@ -1,28 +1,61 @@
-# Offline-Changepoint-Detection-in-Channel-Codes
+# 📊 Offline Changepoint Detection in Channel Codes
 
-In this repository, I am tracking the progress of my research related to offline changepoint detection, including my learnings and mistakes throughout the entire process.
+This repository tracks the progress of my research on offline changepoint detection in channel codes. It includes literature reviews, presentation resources, and coding progress, detailing my learning journey, methods explored, and insights gained.
+
+---
+
+## Table of Contents
+- [Overview](#overview)
+- [Literature Review and Presentations](#literature-review-and-presentations)
+- [Code Progress](#code-progress)
+- [Drafts](#drafts)
+
+---
+
+## Overview
+
+Offline changepoint detection is critical in identifying shifts in data behavior, particularly within channel codes. This repository serves as a record of the research process, tracking progress through:
+- **Literature Review**: Summarizes influential papers and books in the field.
+- **Code Progress**: Highlights methods attempted, insights, and final approaches.
+- **Drafts**: Links to draft presentations and notes.
+
+---
 
 ## Literature Review and Presentations
 
-| **Title**                                                                        | **Links**                                                                                                 |
-| -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Paper - 1 : Selective Review of Offline Changepoint Detection Methods            | [Link to paper](https://www.sciencedirect.com/science/article/pii/S0165168419303494)                      |
-| Paper - 2 : Automatic Change-Point Detection in Time Series via Deep Learning    | [Link to paper](https://arxiv.org/abs/2211.03860)                                                                  |
-| Paper - 3 : Inference About the Change-Point in a Sequence of Binomial Variables (1970)    | [Link to paper]()                                                                  |
-| Paper - 4 : A Test for a Change in a Parameter Occurring at an Unknown Point (1955)   | [Link to paper]()                                                                  |
-| Paper - 5 : Nonparametric Changepoint Analysis for Bernoulli Random Variables Based on Neural Networks   | [Link to paper]()               |
-| Book - 1 : Detection of Abrupt Changes: Theory and Application                   | [Only chapter - 2](https://people.irisa.fr/Michele.Basseville/kniga/kniga.pdf) |
-| Book - 2 : Error Control Coding: Fundamentals and Applications                   | [Link to book](https://pg024ec.wordpress.com/wp-content/uploads/2013/09/error-control-coding-by-shu-lin.pdf)                |
-| Book - 3 : Fundamental of Statistical Signal Processing                          | [Link to book]()                                                                                                   |
+Below is a curated list of key papers and books, along with links for deeper reference.
 
+| **Title**                                                                           | **Link**                                                                                                 |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Paper - 1:** Selective Review of Offline Changepoint Detection Methods            | [View Paper](https://www.sciencedirect.com/science/article/pii/S0165168419303494)                       |
+| **Paper - 2:** Automatic Change-Point Detection in Time Series via Deep Learning    | [View Paper](https://arxiv.org/abs/2211.03860)                                                          |
+| **Paper - 3:** Inference About the Change-Point in a Sequence of Binomial Variables | [View Paper]()                                                                                          |
+| **Paper - 4:** A Test for a Change in a Parameter Occurring at an Unknown Point     | [View Paper]()                                                                                          |
+| **Paper - 5:** Nonparametric Changepoint Analysis for Bernoulli Random Variables Based on Neural Networks | [View Paper]()      |
+| **Book - 1:** Detection of Abrupt Changes: Theory and Application                   | [Chapter 2 Only](https://people.irisa.fr/Michele.Basseville/kniga/kniga.pdf)                            |
+| **Book - 2:** Error Control Coding: Fundamentals and Applications                   | [View Book](https://pg024ec.wordpress.com/wp-content/uploads/2013/09/error-control-coding-by-shu-lin.pdf)|
+| **Book - 3:** Fundamentals of Statistical Signal Processing                         | [View Book]()                                                                                           |
 
-Literature Review Presentation (Paper - 1,3,4) [Google Slides](https://docs.google.com/presentation/d/1yzx00AFN8aDG7L4OdEDbvaQSgfRj37CbkmYR_34oxAI/edit#slide=id.g28aa7e56430_0_26) 
+**Literature Review Presentation (Papers 1, 3, 4)**: [Google Slides Presentation](https://docs.google.com/presentation/d/1yzx00AFN8aDG7L4OdEDbvaQSgfRj37CbkmYR_34oxAI/edit#slide=id.g28aa7e56430_0_26)
 
-
+---
 
 ## Code Progress 
-In this section I will track how much I have tried and compared in the code part of this project, Which methods I have tried and which one I am going to use or why one algo is bad. 
 
-## Draft
-1. (Selective Review Of Offline Changepoint Detection Methods and Some Info about Derivation of Pd)[https://docs.google.com/presentation/d/1yzx00AFN8aDG7L4OdEDbvaQSgfRj37CbkmYR_34oxAI/edit#slide=id.p]
-2. Literature Review 2 (https://docs.google.com/presentation/d/1Q5Bpr53ahE7VJUO9jEYY8Y5o6oiOsMB28Xdz1r6LM04/edit#slide=id.p)
+This section tracks the coding and experimentation journey for this project. Here, I document each method tried, the comparative insights gained, and the rationale behind choosing or discarding certain algorithms:
+
+- **Current Methods**: A summary of all methods tried so far, with notes on their effectiveness.
+- **Comparative Analysis**: Key reasons for selecting or ruling out specific algorithms.
+
+---
+
+## Drafts
+
+Below are links to draft documents related to the project’s progress and literature review insights:
+
+1. **Selective Review of Offline Changepoint Detection Methods and Derivation of Pd**: [Google Slides Draft](https://docs.google.com/presentation/d/1yzx00AFN8aDG7L4OdEDbvaQSgfRj37CbkmYR_34oxAI/edit#slide=id.p)
+2. **Literature Review 2**: [Google Slides Draft](https://docs.google.com/presentation/d/1Q5Bpr53ahE7VJUO9jEYY8Y5o6oiOsMB28Xdz1r6LM04/edit#slide=id.p)
+
+---
+
+Feel free to reach out with questions, suggestions, or insights!
