@@ -33,7 +33,7 @@ Below is a curated list of key papers and books, along with links for deeper ref
 | **Paper - 4:** A Test for a Change in a Parameter Occurring at an Unknown Point (1955)     | [View Paper](https://academic.oup.com/biomet/article-abstract/42/3-4/523/296358)                                                                                          |
 | **Paper - 5:** Nonparametric Changepoint Analysis for Bernoulli Random Variables Based on Neural Networks (Thesis) | [View Paper](https://kluedo.ub.rptu.de/frontdoor/deliver/index/docId/2032/file/Final_Draft_October_14102008.pdf)      |
 | **Paper - 6:** Inference About the Change-Point in a Sequence of Binomial Variables (1970) | [View Paper](https://www.jstor.org/stable/2334766)      |
-| **Paper - 7:** A Simple cumulative sum type statistic for the change-point problem with zero-one observations(Arthi), (1980) | [View Paper](https://www.jstor.org/stable/2335319)      |
+| **Paper - 7:** A Simple cumulative sum type statistic for the change-point problem with zero-one observations(Arthi, 1980) | [View Paper](https://www.jstor.org/stable/2335319)      |
 | **Book - 1:** Detection of Abrupt Changes: Theory and Application                   | [Chapter 2 Only](https://people.irisa.fr/Michele.Basseville/kniga/kniga.pdf)                            |
 | **Book - 2:** Error Control Coding: Fundamentals and Applications                   | [View Book](https://pg024ec.wordpress.com/wp-content/uploads/2013/09/error-control-coding-by-shu-lin.pdf)|
 | **Book - 3:** Fundamentals of Statistical Signal Processing                         | [View Book]()                                                                                           |
