@@ -30,7 +30,7 @@ Below is a curated list of key papers and books, along with links for deeper ref
 | **Paper - 1:** Selective Review of Offline Changepoint Detection Methods            | [View Paper](https://www.sciencedirect.com/science/article/pii/S0165168419303494)                       |
 | **Paper - 2:** Automatic Change-Point Detection in Time Series via Deep Learning    | [View Paper](https://arxiv.org/abs/2211.03860)                                                          |
 | **Paper - 3:** Inference About the Change-Point in a Sequence of Binomial Variables | [View Paper]()                                                                                          |
-| **Paper - 4:** A Test for a Change in a Parameter Occurring at an Unknown Point     | [View Paper]()                                                                                          |
+| **Paper - 4:** A Test for a Change in a Parameter Occurring at an Unknown Point (1955)     | [View Paper](https://academic.oup.com/biomet/article-abstract/42/3-4/523/296358)                                                                                          |
 | **Paper - 5:** Nonparametric Changepoint Analysis for Bernoulli Random Variables Based on Neural Networks | [View Paper]()      |
 | **Book - 1:** Detection of Abrupt Changes: Theory and Application                   | [Chapter 2 Only](https://people.irisa.fr/Michele.Basseville/kniga/kniga.pdf)                            |
 | **Book - 2:** Error Control Coding: Fundamentals and Applications                   | [View Book](https://pg024ec.wordpress.com/wp-content/uploads/2013/09/error-control-coding-by-shu-lin.pdf)|
