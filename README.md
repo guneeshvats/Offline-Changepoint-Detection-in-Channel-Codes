@@ -5,10 +5,10 @@ This repository tracks the progress of my research on offline changepoint detect
 ---
 
 ## Table of Contents
-- [Overview](#overview)
-- [Literature Review and Presentations](#literature-review-and-presentations)
-- [Code Progress](#code-progress)
-- [Drafts](#drafts)
+- [Overview](#Overview)
+- [Literature Review and Presentations](#Literature-Review-and-Presentations)
+- [Code Progress](#Code-Progress)
+- [Drafts](#Drafts-&-Presentations)
 
 ---
 
@@ -60,5 +60,7 @@ Below are links to draft documents related to the project’s progress and liter
 2. **Literature Review 2**: [Google Slides Draft](https://docs.google.com/presentation/d/1Q5Bpr53ahE7VJUO9jEYY8Y5o6oiOsMB28Xdz1r6LM04/edit#slide=id.p)
 
 ---
+
+## Extra Important Resources and Links
 
 Feel free to reach out with questions, suggestions, or insights!
