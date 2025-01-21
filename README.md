@@ -8,8 +8,9 @@ This repository tracks the progress of my research on offline changepoint detect
 - [Overview](#Overview)
 - [Literature Review and Presentations](#Literature-Review-and-Presentations)
 - [Code Progress](#Code-Progress)
-- [Drafts](#Drafts-&-Presentations)
 - [Target Conferences](#Target-Conferences/Journals)
+- [Drafts](#Drafts-&-Presentations)
+
 
 ---
 
