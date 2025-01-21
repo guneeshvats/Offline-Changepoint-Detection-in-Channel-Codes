@@ -9,6 +9,7 @@ This repository tracks the progress of my research on offline changepoint detect
 - [Literature Review and Presentations](#Literature-Review-and-Presentations)
 - [Code Progress](#Code-Progress)
 - [Drafts](#Drafts-&-Presentations)
+- [Target Conferences](#Target-Conferences/Journals)
 
 ---
 
@@ -52,7 +53,7 @@ This section tracks the coding and experimentation journey for this project. Her
 
 ---
 
-## Target Conferences 
+## Target Conferences/Journals
 1. ITW [Link](https://www.internationaltelecomsweek.com/) - April 11, 2025
 2. WCNC [Link](https://wcnc2025.ieee-wcnc.org/call-papers) - Mid October
 3. IEEE ICC [Link](https://icc2025.ieee-icc.org/) - Mid October
