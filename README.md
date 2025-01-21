@@ -52,7 +52,11 @@ This section tracks the coding and experimentation journey for this project. Her
 
 ---
 
-## Extra Research Papers that can be of help
+## Target Conferences 
+1. ITW [Link](https://www.internationaltelecomsweek.com/) - April 11, 2025
+2. WCNC [Link](https://wcnc2025.ieee-wcnc.org/call-papers) - Mid October
+3. IEEE ICC [Link](https://icc2025.ieee-icc.org/) - Mid October
+4. Journal IEEE Comm Letters [Link](https://www.comsoc.org/publications/journals/ieee-comml/ieee-communications-letters-submit-manuscript) 
 
 
 
