@@ -7,7 +7,9 @@
 
 `Bayesian_1975.py` - code file simulated the elementary simulations
 
-`Week - 2 : 6th Feb, 2025`
-1. 
+`Week - 2 : 6th Feb, 2025 - 10th Feb, 2025`
+1. Complete 1980 CUSUM paper - [Link](https://www.jstor.org/stable/2335319?refreqid=fastly-default%3A81fef0d7415e79e63875176c864c8f65&seq=1), Presentation - Link 
+2. Chapter 2 - 2.1, 2.2, 2.3
+
 
 
