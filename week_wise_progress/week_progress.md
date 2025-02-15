@@ -16,7 +16,8 @@
 3. Paper - Nonparametric Changepoint Analysis for Bernoulli Random Variables Based on Neural Networks (Thesis) - Presentation Link 
 4. Paper [Link](https://www.jstor.org/stable/2335319?refreqid=fastly-default%3A81fef0d7415e79e63875176c864c8f65&seq=1) - A Simple Cumulative Sum Type Statistic for the Change-Point Problem with Zero-One Observations - Presentation Link 
 5. Paper - LSTM NN Paper - Presentation Link 
-6. Revision of Signal Processing Fundamentals - [Book], [NPTEL Lectures] 
+6. Revision of Signal Processing Fundamentals - [Book], [NPTEL Lectures]
+7. Complete the Thesis Proposal, And presentation - Link 
 
 
 
