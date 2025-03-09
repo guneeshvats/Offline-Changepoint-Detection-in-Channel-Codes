@@ -75,6 +75,7 @@ Below are links to draft documents related to the project’s progress and liter
 2. **Literature Review 2**: [Google Slides Draft](https://docs.google.com/presentation/d/1Q5Bpr53ahE7VJUO9jEYY8Y5o6oiOsMB28Xdz1r6LM04/edit#slide=id.p)
 3. **Literature Revuew 3**:
 4. Book : Detection of abrupt changes : [Link](https://docs.google.com/presentation/d/1PnksHSrUnm4IxZZjZRDIiH2pTVHfskBcWiLQSv_T2x0/edit?usp=sharing)
+5. Presentation of Preliminary Algorithm Results : [Link](https://docs.google.com/presentation/d/1ifJwTT7WChptNUmF1L-d0v3JG3_7ZUKZgfhd49x3zac/edit?usp=sharing)
 
 ---
 
