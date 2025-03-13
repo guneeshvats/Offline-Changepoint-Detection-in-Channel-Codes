@@ -1,15 +1,17 @@
-# 📊 Offline Changepoint Detection in Channel Codes
+# Offline Changepoint Detection in Channel Codes
 
-This repository tracks the progress of my research on offline changepoint detection in channel codes. It includes literature reviews, presentation resources, and coding progress, detailing my learning journey, methods explored, and insights gained.
+This repository tracks the progress of my research on offline changepoint detection in linear block codes. It includes literature reviews, presentation resources, and coding progress, detailing my learning journey, methods explored, and insights gained.
 
 ---
 
 ## Table of Contents
 - [Overview](#Overview)
-- [Literature Review and Presentations](#Literature-Review-and-Presentations)
+- [Literature Review](#Literature-Review)
 - [Code Progress](#Code-Progress)
-- [Target Conferences](#Target-Conferences/Journals)
-- [Drafts](#Drafts-&-Presentations)
+- [Target Conferences/Journals](#Target-Conferences/Journals)
+- [Presentations](#Presentations)
+- [Research Paper Drafts](#Research-Paper-Drafts)
+- [Extra Important Resources and Links](#Extra-Important-Resourcec-and-Links)
 
 
 ---
@@ -23,11 +25,8 @@ Offline changepoint detection is critical in identifying shifts in data behavior
 
 ---
 
-## Literature Review and Presentations
 
-Below is a curated list of key papers and books, along with links for deeper reference.
-
-## Literature Review and Presentations
+## Literature Review
 
 Below is a curated list of key papers and books, along with links for deeper reference.
 
@@ -66,8 +65,7 @@ This section tracks the coding and experimentation journey for this project. Her
 
 
 ---
-
-## Drafts & Presentations
+## Presentations
 
 Below are links to draft documents related to the project’s progress and literature review insights:
 
@@ -76,6 +74,11 @@ Below are links to draft documents related to the project’s progress and liter
 3. **Literature Revuew 3**:
 4. Book : Detection of abrupt changes : [Link](https://docs.google.com/presentation/d/1PnksHSrUnm4IxZZjZRDIiH2pTVHfskBcWiLQSv_T2x0/edit?usp=sharing)
 5. Presentation of Preliminary Algorithm Results : [Link](https://docs.google.com/presentation/d/1ifJwTT7WChptNUmF1L-d0v3JG3_7ZUKZgfhd49x3zac/edit?usp=sharing)
+
+---
+## Research Paper Drafts
+1. 
+
 
 ---
 
