@@ -11,7 +11,7 @@ This repository tracks the progress of my research on offline changepoint detect
 - [Target Conferences/Journals](#Target-Conferences/Journals)
 - [Presentations](#Presentations)
 - [Research Paper Drafts](#Research-Paper-Drafts)
-- [Extra Important Resources and Links](#Extra-Important-Resourcec-and-Links)
+- [Extra Important Resources and Links](#Extra-Important-Resources-and-Links)
 
 
 ---
