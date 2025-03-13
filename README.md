@@ -52,6 +52,9 @@ This section tracks the coding and experimentation journey for this project. Her
 - **Current Methods**: A summary of all methods tried so far, with notes on their effectiveness.
 - **Comparative Analysis**: Key reasons for selecting or ruling out specific algorithms.
 
+For April Conferences 
+1. Statistical Method we are targetting - MLE Based Method --> `For April Deadline/mle.py`
+
 ---
 
 ## Target Conferences/Journals
@@ -77,7 +80,7 @@ Below are links to draft documents related to the project’s progress and liter
 
 ---
 ## Research Paper Drafts
-1. 
+1. Draft for ITW - [Link](https://www.overleaf.com/project/67d121a950d4fef4b0e5c5ab)
 
 
 ---
