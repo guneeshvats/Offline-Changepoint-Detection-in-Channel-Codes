@@ -88,3 +88,4 @@ Below are links to draft documents related to the project’s progress and liter
 ## Extra Important Resources and Links
 
 Feel free to reach out with questions, suggestions, or insights!
+[Email](mailto:guneesh.vats@research.iiit.ac.in)
