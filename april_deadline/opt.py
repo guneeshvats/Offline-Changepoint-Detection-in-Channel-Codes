@@ -104,9 +104,10 @@ def negative_log_likelihood_bernoulli(segment):
 
 
 ############################################################################################
+#                          DETECT SINGLE CHANGEPOINT METHOD 
 ############################################################################################
 """
-Title: detect_single_changepoint_method1
+Title: detect_single_changepoint_method
 
 Detect a single changepoint by scanning all possible t = 1..(n-1).
 Return the t_hat that minimizes the total negative log-likelihood.
