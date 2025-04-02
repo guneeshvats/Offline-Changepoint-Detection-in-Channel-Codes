@@ -46,13 +46,11 @@ def generate_bernoulli_data(n, p, q):
     data = np.zeros(n, dtype=int)
 
     # Segment 1: from index 0 to t_true-1 => Bernoulli(p)
-    data[:t_true] = np.random.rand(t_true) < p
+    data[:t_true] = np.random.binomial(1, p, t_true)
     # Segment 2: from index t_true to n-1 => Bernoulli(q)
-    data[t_true:] = np.random.rand(n - t_true) < q
+    data[t_true:] = np.random.binomial(1, q, n - t_true)
 
     return data, t_true
-
-
 
 ############################################################################################
 #                           NEGATIVE LOG LIKELIHOOD BERNOULLI
@@ -187,12 +185,20 @@ def run_experiment_method(
     plt.figure(figsize=(8,6))
     for n in sample_sizes:
         plt.plot(delta_values, results[n], marker='o', label=f"n={n}")
+        # Add text annotations for each point
+        for d, acc in zip(delta_values, results[n]):
+            plt.annotate(f'{acc:.3f}', 
+                        xy=(d, acc),
+                        xytext=(0, 4),
+                        textcoords='offset points',
+                        ha='center')
     
     plt.title("Accuracy vs. Delta (Method 1, Bernoulli Changepoint (.3, .7))")
     plt.xlabel("Delta (tolerance around true CP)")
     plt.ylabel("Accuracy (fraction of successful detections)")
     plt.legend()
     plt.xticks(range(max_delta + 1))  # Show all integer values from 0 to max_delta
+    plt.grid(True)  # Added grid to the plot
     plt.show()
     
     # Print the values
@@ -214,9 +220,9 @@ def run_experiment_method(
 # --- Actually run the experiment (example usage) ---
 if __name__ == "__main__":
     results_method1 = run_experiment_method(
-        sample_sizes=[10, 50, 100],
+        sample_sizes=[10, 30, 100],
         p=0.3,
         q=0.7,
-        max_delta=10,   # You can change this max
-        iterations=100  # Increase if you want more stable estimates
+        max_delta=10,
+        iterations=1000  # Changed to 1000 iterations
     )

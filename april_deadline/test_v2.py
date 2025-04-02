@@ -1,153 +1,83 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import pandas as pd
+import matplotlib.pyplot as plt
+from collections import Counter
 
-############################################################################################
-#                                   GENERATE DATA (BERNOULLI, NORMAL & CATEGORICAL)
-############################################################################################
-def generate_data(n, distribution_type='bernoulli', p=0.3, q=0.7, mu1=0, sigma1=1, mu2=3, sigma2=1, pmf1=None, pmf2=None):
-    t_true = np.random.randint(1, n)  # Random changepoint
-    data = np.zeros(n, dtype=int if distribution_type == 'categorical' else float)
-    
-    if distribution_type == 'bernoulli':
-        data[:t_true] = np.random.rand(t_true) < p
-        data[t_true:] = np.random.rand(n - t_true) < q
-    elif distribution_type == 'normal':
-        data[:t_true] = np.random.normal(mu1, sigma1, t_true)
-        data[t_true:] = np.random.normal(mu2, sigma2, n - t_true)
-    elif distribution_type == 'categorical':
-        data[:t_true] = np.random.choice(len(pmf1), size=t_true, p=pmf1)
-        data[t_true:] = np.random.choice(len(pmf2), size=n - t_true, p=pmf2)
-    
-    return data, t_true
+# Parameters
+T_values = [10, 30, 100]
+theta_0 = 0.3
+theta_1 = 0.7
+runs = 1000
+max_window = 10
 
-############################################################################################
-#                           NEGATIVE LOG LIKELIHOOD (BERNOULLI, NORMAL & CATEGORICAL)
-############################################################################################
-def negative_log_likelihood(segment, distribution_type='bernoulli', num_categories=3):
-    length = len(segment)
-    if length == 0:
-        return np.inf  # Avoid invalid cases
-    
-    if distribution_type == 'bernoulli':
-        p_hat = np.mean(segment)
-        if p_hat == 0.0 or p_hat == 1.0:
-            return np.inf
-        k = np.sum(segment)
-        return - (k * np.log(p_hat) + (length - k) * np.log(1 - p_hat))
-    elif distribution_type == 'normal':
-        if length < 2:
-            return np.inf
-        mu_hat = np.mean(segment)
-        sigma_hat = np.std(segment, ddof=1)
-        if sigma_hat == 0:
-            return np.inf
-        return 0.5 * length * np.log(2 * np.pi * sigma_hat**2) + np.sum((segment - mu_hat)**2) / (2 * sigma_hat**2)
-    elif distribution_type == 'categorical':
-        counts = np.bincount(segment, minlength=num_categories)
-        p_hat = counts / length  # Estimate PMF
-        if np.any(p_hat == 0):  # Avoid log(0) issues
-            return np.inf
-        return -np.sum(counts * np.log(p_hat))
+# Function to run a single trial
+def run_trial(T):
+    tau_true = np.random.randint(3, T - 3)
+    R = np.concatenate([
+        np.random.binomial(1, theta_0, tau_true),
+        np.random.binomial(1, theta_1, T - tau_true)
+    ])
 
-############################################################################################
-#                        DETECT SINGLE CHANGEPOINT (BERNOULLI, NORMAL & CATEGORICAL)
-############################################################################################
-def detect_single_changepoint_method1(data, distribution_type='bernoulli', num_categories=3):
-    n = len(data)
-    best_t = 0
-    best_cost = np.inf
-    
-    for t in range(1, n):
-        cost_left = negative_log_likelihood(data[:t], distribution_type, num_categories)
-        cost_right = negative_log_likelihood(data[t:], distribution_type, num_categories)
-        total_cost = cost_left + cost_right
-        if total_cost < best_cost:
-            best_cost = total_cost
-            best_t = t
-    
-    return best_t
+    # Log-likelihoods
+    log_r = np.log(theta_0 / theta_1)
+    log_rc = np.log((1 - theta_0) / (1 - theta_1))
+    log_rp = np.log(theta_1 / theta_0)
+    log_rcp = np.log((1 - theta_1) / (1 - theta_0))
 
-############################################################################################
-#                        RUN EXPERIMENT METHOD (BERNOULLI, NORMAL & CATEGORICAL)
-############################################################################################
-def run_experiment_method(
-    sample_sizes=[10, 50, 100],
-    distribution_type='bernoulli',
-    p=0.3, q=0.7,
-    mu1=0, sigma1=1, mu2=3, sigma2=1,
-    max_delta=10,
-    iterations=100,
-    num_categories=3
-    ):
-    
-    delta_values = range(0, max_delta+1)
-    results = {}
-    
-    for n in sample_sizes:
-        accuracy_list = []
-        
-        for delta in delta_values:
-            success_count = 0
-            
-            for _ in range(iterations):
-                if distribution_type == 'categorical':
-                    pmf1 = np.random.dirichlet(np.ones(num_categories))
-                    pmf2 = np.random.dirichlet(np.ones(num_categories))
-                    data, t_true = generate_data(n, distribution_type, pmf1=pmf1, pmf2=pmf2)
-                else:
-                    data, t_true = generate_data(n, distribution_type, p, q, mu1, sigma1, mu2, sigma2)
-                
-                t_hat = detect_single_changepoint_method1(data, distribution_type, num_categories)
-                
-                if abs(t_hat - t_true) <= delta:
-                    success_count += 1
-            
-            accuracy = success_count / iterations
-            accuracy_list.append(accuracy)
-        
-        results[n] = accuracy_list
-    
-    plt.figure(figsize=(8,6))
-    for n in sample_sizes:
-        plt.plot(delta_values, results[n], marker='o', label=f"n={n}")
-    
-    plt.title(f"Accuracy vs. Delta (Method 1, {distribution_type.capitalize()} Changepoint)")
-    plt.xlabel("Delta (tolerance around true CP)")
-    plt.ylabel("Accuracy (fraction of successful detections)")
-    plt.legend()
-    plt.xticks(range(max_delta + 1))
-    plt.show()
-    
-    return results
+    # Compute Xt
+    Xt_vals = []
+    for t in range(1, T):
+        xt_left = sum(R[i] * log_r + (1 - R[i]) * log_rc for i in range(t))
+        xt_right = sum(R[i] * log_rp + (1 - R[i]) * log_rcp for i in range(t, T))
+        Xt_vals.append(xt_left + xt_right)
 
-############################################################################################
-#                                   TESTING (ALL CASES)
-############################################################################################
-if __name__ == "__main__":
-    print("Running Bernoulli Changepoint Detection...")
-    results_bernoulli = run_experiment_method(
-        sample_sizes=[10, 50, 100],
-        distribution_type='bernoulli',
-        p=0.3, q=0.7,
-        max_delta=10,
-        iterations=100
-    )
+    estimated_tau = np.argmax(Xt_vals) + 1
+    error = abs(estimated_tau - tau_true)
+    return error
+
+# Store accuracy curves for plotting
+window_range = list(range(max_window + 1))
+accuracy_curves = {}
+
+for T in T_values:
+    window_counts = {w: 0 for w in window_range}
     
-    print("\nRunning Normal Changepoint Detection...")
-    results_normal = run_experiment_method(
-        sample_sizes=[10, 50, 100],
-        distribution_type='normal',
-        mu1=0, sigma1=1, mu2=3, sigma2=1,
-        max_delta=10,
-        iterations=100
-    )
+    for _ in range(runs):
+        error = run_trial(T)
+        if error <= max_window:
+            window_counts[error] += 1
+
+    cumulative = 0
+    cumulative_acc = []
+    for w in window_range:
+        cumulative += window_counts[w]
+        acc = round(cumulative / runs, 3)  # Changed to probability and 3 decimal places
+        cumulative_acc.append(acc)
     
-    print("\nRunning Categorical Changepoint Detection...")
-    results_categorical = run_experiment_method(
-        sample_sizes=[10, 50, 100],
-        distribution_type='categorical',
-        max_delta=10,
-        iterations=100,
-        num_categories=3
-    )
+    accuracy_curves[T] = cumulative_acc
+
+    # Print accuracy table
+    print(f"\n📊 Results for T = {T} (over {runs} runs):")
+    for w, acc in zip(window_range, cumulative_acc):
+        print(f"Within ±{w}: {acc:.3f}")
+
+# Plot cumulative accuracy
+plt.figure(figsize=(10, 6))
+for T in T_values:
+    plt.plot(window_range, accuracy_curves[T], marker='o', label=f"T = {T}")
+    # Add text annotations for each point
+    for w, acc in zip(window_range, accuracy_curves[T]):
+        plt.annotate(f'{acc:.3f}', 
+                    xy=(w, acc),
+                    xytext=(0, 4),
+                    textcoords='offset points',
+                    ha='center')
+
+plt.title("Cumulative Accuracy of τ̂ within Window of True τ")
+plt.xlabel("Window size (|τ̂ − τ| ≤ n)")
+plt.ylabel("Cumulative Accuracy (probability)")
+plt.xticks(window_range)
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()
