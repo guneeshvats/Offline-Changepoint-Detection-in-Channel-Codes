@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+import ruptures as rpt
 
 # Set seed for reproducibility
 np.random.seed(42)
@@ -27,7 +28,7 @@ def generate_sequence(T, theta_0, theta_1):
     post = np.random.binomial(1, theta_1, T - tau)
     return np.concatenate([pre, post]), tau
 
-# Likelihood based changepoint detection
+# MLE based changepoint detection
 def detect_mle(R):
     Xt = []
     for t in range(1, len(R)):
@@ -43,7 +44,13 @@ def detect_cusum(R):
     K = np.argmax(np.abs(s))
     return K + 1
 
-# Compute π using Hinkley's formulation
+# Ruptures Binseg (parametric known θ₀, θ₁)
+def detect_ruptures(R):
+    algo = rpt.Binseg(model="l2").fit(R.reshape(-1, 1))
+    result = algo.predict(n_bkps=1)
+    return result[0]  # index of changepoint
+
+# Compute π using Hinkley's theoretical method
 def compute_theoretical_pi(N, theta_0, theta_1, phi):
     def compute_q_matrix(theta, phi, L_max, M_max):
         q = np.zeros((L_max + 1, M_max + 1))
@@ -122,35 +129,45 @@ def compute_theoretical_pi(N, theta_0, theta_1, phi):
         cumulative.append(prob)
     return cumulative
 
-# Compute empirical accuracies
+# Accuracy counters
 accuracy_mle = [0] * (N + 1)
 accuracy_cusum = [0] * (N + 1)
+accuracy_ruptures = [0] * (N + 1)
 
+# Run experiments
 for _ in range(iterations):
     R, tau = generate_sequence(T, theta_0, theta_1)
     mle_tau = detect_mle(R)
     cusum_tau = detect_cusum(R)
+    ruptures_tau = detect_ruptures(R)
+
     for n in range(N + 1):
         if abs(mle_tau - tau) <= n:
             accuracy_mle[n] += 1
         if abs(cusum_tau - tau) <= n:
             accuracy_cusum[n] += 1
+        if abs(ruptures_tau - tau) <= n:
+            accuracy_ruptures[n] += 1
 
+# Normalize
 accuracy_mle = [round(x / iterations, 3) for x in accuracy_mle]
 accuracy_cusum = [round(x / iterations, 3) for x in accuracy_cusum]
+accuracy_ruptures = [round(x / iterations, 3) for x in accuracy_ruptures]
 accuracy_pi = compute_theoretical_pi(N, theta_0, theta_1, phi)
 
-# Plotting all in one graph
+# Plot
 plt.figure(figsize=(10, 6))
 plt.plot(n_values, accuracy_mle, marker='o', label='MLE Method', color='blue')
 plt.plot(n_values, accuracy_cusum, marker='s', label='CUSUM Method', color='orange')
+plt.plot(n_values, accuracy_ruptures, marker='D', label='Ruptures Binseg (l2)', color='purple')
 plt.plot(n_values, accuracy_pi, marker='^', label='Theoretical πₙ (Hinkley)', color='green')
 
-# Annotate values
+# Annotate
 for n in n_values:
-    plt.annotate(f'{accuracy_mle[n]:.2f}', (n, accuracy_mle[n]), textcoords="offset points", xytext=(0,5), ha='center', color='blue')
-    plt.annotate(f'{accuracy_cusum[n]:.2f}', (n, accuracy_cusum[n]), textcoords="offset points", xytext=(0,-10), ha='center', color='orange')
-    plt.annotate(f'{accuracy_pi[n]:.2f}', (n, accuracy_pi[n]), textcoords="offset points", xytext=(0,12), ha='center', color='green')
+    plt.annotate(f'{accuracy_mle[n]:.2f}', (n, accuracy_mle[n]), xytext=(0, 4), textcoords='offset points', ha='center', color='blue')
+    plt.annotate(f'{accuracy_cusum[n]:.2f}', (n, accuracy_cusum[n]), xytext=(0, -10), textcoords='offset points', ha='center', color='orange')
+    plt.annotate(f'{accuracy_ruptures[n]:.2f}', (n, accuracy_ruptures[n]), xytext=(0, 12), textcoords='offset points', ha='center', color='purple')
+    plt.annotate(f'{accuracy_pi[n]:.2f}', (n, accuracy_pi[n]), xytext=(0, 18), textcoords='offset points', ha='center', color='green')
 
 plt.title(f"Changepoint Detection Accuracy Comparison (T={T})")
 plt.xlabel("n (Window size: |τ̂ − τ| ≤ n)")
