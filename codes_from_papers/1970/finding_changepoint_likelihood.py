@@ -5,7 +5,7 @@ from collections import Counter
 
 # Parameters
 T_values = [10, 30, 100]
-theta_0 = 0.3
+theta_0 = 0.3 
 theta_1 = 0.7
 runs = 1000
 max_window = 10

@@ -51,7 +51,7 @@ def negative_log_likelihood_categorical(segment):
 
     # Count how many times each category appears
     counts = np.array([np.sum(segment == k) for k in categories])
-    probs = counts / length  # MLE estimate: relative frequency
+    probs = counts / length  # MLE estimate: relative frequebncy
 
     # Handle numerical edge cases where p_hat = 0
     if np.any(probs == 0):

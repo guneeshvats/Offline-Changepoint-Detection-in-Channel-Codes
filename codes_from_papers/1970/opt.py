@@ -24,7 +24,7 @@ Dated : 14th April, 2024
 import numpy as np
 import matplotlib.pyplot as plt
 import ruptures as rpt
-import pandas as pd 
+import pandas as pd                       
 
 ############################################################################################
 #                                   GENERATE BERNOULLI DATA

@@ -78,6 +78,7 @@ Below are links to draft documents related to the project’s progress and liter
 4. Book : Detection of abrupt changes : [Link](https://docs.google.com/presentation/d/1PnksHSrUnm4IxZZjZRDIiH2pTVHfskBcWiLQSv_T2x0/edit?usp=sharing)
 5. Presentation of Preliminary Algorithm Results : [Link](https://docs.google.com/presentation/d/1ifJwTT7WChptNUmF1L-d0v3JG3_7ZUKZgfhd49x3zac/edit?usp=sharing)
 6. Inference about the changepoint in a sequence of binomial variables - 1970 : [Link](https://docs.google.com/presentation/d/1KxgF2PPAa2MZxR1SSUYHFBYZ1rNfyc6XSH2G6ofMlBc/edit?usp=sharing)
+7. GlobComm Submission Preparation - [Link](https://docs.google.com/presentation/d/13i0D1iV8yZ6qXQxqiX-G1czG4zSqdcSIYQr8xqTLsEI/edit?usp=sharing)
 
 ---
 ## Research Paper Drafts
