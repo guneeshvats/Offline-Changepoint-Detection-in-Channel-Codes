@@ -79,7 +79,9 @@ Below are links to draft documents related to the project’s progress and liter
 5. Presentation of Preliminary Algorithm Results : [Link](https://docs.google.com/presentation/d/1ifJwTT7WChptNUmF1L-d0v3JG3_7ZUKZgfhd49x3zac/edit?usp=sharing)
 6. Inference about the changepoint in a sequence of binomial variables - 1970 : [Link](https://docs.google.com/presentation/d/1KxgF2PPAa2MZxR1SSUYHFBYZ1rNfyc6XSH2G6ofMlBc/edit?usp=sharing)
 7. GlobComm Submission Preparation - [Link](https://docs.google.com/presentation/d/13i0D1iV8yZ6qXQxqiX-G1czG4zSqdcSIYQr8xqTLsEI/edit?usp=sharing)
-
+8. Chapter 3 : Detection Theory Book - Stephen M Kay
+9. Fundamentals Presentation 2 
+10. 
 ---
 ## Research Paper Drafts
 1. Draft for ITW - [Link](https://www.overleaf.com/project/67d121a950d4fef4b0e5c5ab)
