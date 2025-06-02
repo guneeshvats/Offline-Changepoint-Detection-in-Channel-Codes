@@ -83,7 +83,7 @@ Below are links to draft documents related to the project’s progress and liter
 9. Fundamentals Presentation 2 : Vector Spaces
 10. Fundamentals Preparation 3 : Bayesian Theory
 11. Fundamentals Preparation 4 : Data Processing Techniques 
-12. Changepoint Detection Basics Chapter 2, 6Presentation 
+12. Changepoint Detection Basics Chapters - [2, ]
 ---
 ## Research Paper Drafts
 1. Draft for ITW - [Link](https://www.overleaf.com/project/67d121a950d4fef4b0e5c5ab)
