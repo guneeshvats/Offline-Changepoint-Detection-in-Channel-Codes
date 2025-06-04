@@ -79,11 +79,11 @@ Below are links to draft documents related to the project’s progress and liter
 5. Presentation of Preliminary Algorithm Results : [Link](https://docs.google.com/presentation/d/1ifJwTT7WChptNUmF1L-d0v3JG3_7ZUKZgfhd49x3zac/edit?usp=sharing)
 6. Inference about the changepoint in a sequence of binomial variables - 1970 : [Link](https://docs.google.com/presentation/d/1KxgF2PPAa2MZxR1SSUYHFBYZ1rNfyc6XSH2G6ofMlBc/edit?usp=sharing)
 7. GlobComm Submission Preparation - [Link](https://docs.google.com/presentation/d/13i0D1iV8yZ6qXQxqiX-G1czG4zSqdcSIYQr8xqTLsEI/edit?usp=sharing)
-8. Fundamentals Presentation 1 : Chapter 3 : Fundamentals of Statistical Signal Processing (Hypothesis Testing) - [Link](https://docs.google.com/presentation/d/1lgZ_AjC37yOn1BTG8N3TQjbQZ_DMGhDRBksqX38kGpw/edit?usp=sharing) 
-9. Fundamentals Presentation 2 : Vector Spaces
-10. Fundamentals Preparation 3 : Bayesian Theory
+8. Fundamentals Presentation 1 : Chapter 3 : Fundamentals of Statistical Signal Processing Vol-II Detection Theory - [Link](https://docs.google.com/presentation/d/1lgZ_AjC37yOn1BTG8N3TQjbQZ_DMGhDRBksqX38kGpw/edit?slide=id.p#slide=id.p) 
+9. Fundamentals Presentation 2 : Chapter 2 : An Introduction to Signal Detection and Estimation - H. Vincent Poor - [Link](https://docs.google.com/presentation/d/1DbZYZJOqG9VSFbPNlJv7c9F4wX4eOi_dql83JxxSCwQ/edit?usp=sharing)
+10. Fundamentals Preparation 3 : Vector Spaces 
 11. Fundamentals Preparation 4 : Data Processing Techniques 
-12. Changepoint Detection Basics Chapters - [2, ]
+12. Changepoint Detection Basics Chapters - [2]
 ---
 ## Research Paper Drafts
 1. Draft for ITW - [Link](https://www.overleaf.com/project/67d121a950d4fef4b0e5c5ab)
