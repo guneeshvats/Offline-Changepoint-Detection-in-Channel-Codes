@@ -42,6 +42,7 @@ Below is a curated list of key papers and books, along with links for deeper ref
 | 8        | **Book - 2:** Error Control Coding: Fundamentals and Applications                   | [View Book](https://pg024ec.wordpress.com/wp-content/uploads/2013/09/error-control-coding-by-shu-lin.pdf)|
 | 9        | **Book - 3:** Fundamentals of Statistical Signal Processing                         | [View Book]()                                                                                           |
 | 10        | **Paper - 7:** Bayesian Approach to Inference About a Changepoint in a Sequence of Random Variables (1975)                         | [View Paper](https://www.jstor.org/stable/2335381?refreqid=fastly-default%3A81fef0d7415e79e63875176c864c8f65&seq=2)                                                                                           |
+| 11        | **Book - 4:** An introduction to signal detection and estimation, Vicent Poor | [View Book]() 
 
 ---
 
