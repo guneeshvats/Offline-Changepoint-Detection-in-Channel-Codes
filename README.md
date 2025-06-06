@@ -7,11 +7,13 @@ This repository tracks the progress of my research on offline changepoint detect
 ## Table of Contents
 - [Overview](#Overview)
 - [Literature Review](#Literature-Review)
+- [Literature Review](#Books)
 - [Code Progress](#Code-Progress)
 - [Target Conferences/Journals](#Target-Conferences/Journals)
 - [Presentations](#Presentations)
 - [Research Paper Drafts](#Research-Paper-Drafts)
 - [Extra Important Resources and Links](#Extra-Important-Resources-and-Links)
+- [References](#References)
 
 
 ---
