@@ -86,7 +86,7 @@ Below are links to draft documents related to the project’s progress and liter
 9. Fundamentals Presentation 2 : Chapter 2 : An Introduction to Signal Detection and Estimation - H. Vincent Poor - [Google Sheets](https://docs.google.com/presentation/d/1DbZYZJOqG9VSFbPNlJv7c9F4wX4eOi_dql83JxxSCwQ/edit?usp=sharing)
 10. Fundamentals Preparation 3 : Vector Spaces 
 11. Fundamentals Preparation 4 : Data Processing Techniques 
-12. Changepoint Detection Basics Chapters - [2]
+12. Changepoint Detection Basics Chapters - [Book - Detection of Abrupt Changes Ch-2](https://docs.google.com/presentation/d/1iXaYZVFk-exzLrhFkULLsp9rYov2lKB-wqtYYZgmQAg/edit?slide=id.g365fba041ae_0_227#slide=id.g365fba041ae_0_227)
 ---
 ## Research Paper Drafts
 1. Draft for ITW - [Link](https://www.overleaf.com/project/67d121a950d4fef4b0e5c5ab)
