@@ -90,6 +90,7 @@ Below are links to draft documents related to the project’s progress and liter
 ---
 ## Research Paper Drafts
 1. Draft for ITW - [Link](https://www.overleaf.com/project/67d121a950d4fef4b0e5c5ab)
+2. Draft for Comm Letter - [Link]()
 
 
 ---
