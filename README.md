@@ -95,10 +95,8 @@ Below are links to draft documents related to the project’s progress and liter
 
 ---
 ## Code Progress : 
-
-
-
-
+1. Neural Networks code
+2. Ruptures implementation
 
 ---
 
