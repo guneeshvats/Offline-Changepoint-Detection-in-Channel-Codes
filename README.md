@@ -107,3 +107,5 @@ Below are links to draft documents related to the project’s progress and liter
 
 Feel free to reach out with questions, suggestions, or insights!
 [Email](mailto:guneesh.vats@research.iiit.ac.in)
+My Research Team : 
+Professor : Arti Yardi - SPCRC Lab : IIIT Hyderabad 
