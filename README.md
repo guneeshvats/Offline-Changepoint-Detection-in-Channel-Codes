@@ -95,11 +95,9 @@ Below are links to draft documents related to the project’s progress and liter
 
 ---
 ## Code Progress : 
-1. Neural Networks code : 1D CNN architecture, 1D CNN and LSTM 
-3. Ruptures implementation : For the processed codewords - As a bernoulli sequence 
-4. Data Generation Code : s
-
-
+1. Data Generation Code (MATLAB)
+2. Unprocessed Codewords Data : NN (1dCNN)
+3. Processed Data : Ruptures and python 
 ---
 
 ## Extra Important Resources and Links
