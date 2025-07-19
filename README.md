@@ -1,18 +1,17 @@
 # Offline Changepoint Detection in Channel Codes
 
-This repository tracks the progress of my research on offline changepoint detection in linear block codes. It includes literature reviews, presentation resources, and coding progress, detailing my learning journey, methods explored, and insights gained.
-
+This repository tracks the progress of my research project on offline changepoint detection in linear block codes.
 ---
 
 ## Table of Contents
 - [Overview](#Overview)
 - [Literature Review](#Literature-Review)
-- [Literature Review](#Books)
+- [Pre-Requisite Material](#Books)
 - [Code Progress](#Code-Progress)
 - [Target Conferences/Journals](#Target-Conferences/Journals)
-- [Presentations](#Presentations)
+- [Presentations/Progress](#Presentations)
 - [Research Paper Drafts](#Research-Paper-Drafts)
-- [Extra Important Resources and Links](#Extra-Important-Resources-and-Links)
+- [Extra Resources and Links](#Extra-Important-Resources-and-Links)
 - [References](#References)
 
 
@@ -21,9 +20,8 @@ This repository tracks the progress of my research on offline changepoint detect
 ## Overview
 
 Offline changepoint detection is critical in identifying shifts in data behavior, particularly within channel codes. This repository serves as a record of the research process, tracking progress through:
-- **Literature Review**: Summarizes influential papers and books in the field.
-- **Code Progress**: Highlights methods attempted, insights, and final approaches.
-- **Drafts**: Links to draft presentations and notes.
+
+Idea : 
 
 ---
 
@@ -97,7 +95,7 @@ Below are links to draft documents related to the project’s progress and liter
 ## Code Progress : 
 1. Data Generation Code (MATLAB)
 2. Unprocessed Codewords Data : NN (1dCNN)
-3. Processed Data : Ruptures and python 
+3. Processed Data : Ruptures and python Libraries
 ---
 
 ## Extra Important Resources and Links
