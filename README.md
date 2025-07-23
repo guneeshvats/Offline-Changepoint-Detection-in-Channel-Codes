@@ -59,13 +59,11 @@ For April Conferences
 ---
 
 ## Target Conferences/Journals
-1. ITW [Link](https://www.internationaltelecomsweek.com/) - April 11, 2025
-2. GlobComm [link](https://globecom2025.ieee-globecom.org/) - April 1, 2025
-3. WCNC [Link](https://wcnc2025.ieee-wcnc.org/call-papers) - Mid October
-4. IEEE ICC [Link](https://icc2025.ieee-icc.org/) - Mid October
+1. ITW [Link](https://www.internationaltelecomsweek.com/) - April 11, 2025 
+2. GlobComm [link](https://globecom2025.ieee-globecom.org/) - April 1, 2025 
+3. WCNC [Link](https://wcnc2025.ieee-wcnc.org/call-papers) - Mid October 
+4. IEEE ICC [Link](https://icc2025.ieee-icc.org/) - Mid October 
 5. Journal IEEE Comm Letters [Link](https://www.comsoc.org/publications/journals/ieee-comml/ieee-communications-letters-submit-manuscript) 
-
-
 
 
 ---
