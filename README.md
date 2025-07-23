@@ -5,6 +5,7 @@ This repository tracks the progress of my research project on offline changepoin
 
 ## Table of Contents
 - [Overview](#Overview)
+- [Directory Structure](#Directory-Structure)
 - [Literature Review](#Literature-Review)
 - [Pre-Requisite Material](#Books)
 - [Code Progress](#Code-Progress)
