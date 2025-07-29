@@ -1,6 +1,8 @@
 # Offline Changepoint Detection in Channel Codes
 
 This repository tracks the progress of my research project on offline changepoint detection in linear block codes.
+Minutes of the Meeting are tracked (from July, 2025 end) in `Miniutes_of_the_meeting_(MoM)` folder. 
+
 ---
 
 ## Table of Contents
@@ -20,15 +22,19 @@ This repository tracks the progress of my research project on offline changepoin
 
 ## Overview
 
-Offline changepoint detection is critical in identifying shifts in data behavior, particularly within channel codes. This repository serves as a record of the research process, tracking progress through:
-
-Idea : 
+Offline changepoint detection is critical in identifying shifts in data behavior, particularly within channel codes. This repository serves as a record of the research process, tracking progress through: 
 
 ---
 
+## Directory Structure 
 
+
+
+
+
+--- 
 ## Literature Review
-
+Link of the Sheet where I am tracking the current updated list of Papers/Books/Resources being used for this project - [Link](https://docs.google.com/spreadsheets/d/1NH3iFS4BFo1hTYis5-IdWirP7EWbnc5gohk_1H-MvWg/edit?gid=0#gid=0)
 Below is a curated list of key papers and books, along with links for deeper reference.
 
 | **S.No** | **Title**                                                                           | **Link**                                                                                                 |
@@ -84,6 +90,12 @@ Below are links to draft documents related to the project’s progress and liter
 10. Fundamentals Preparation 3 : Vector Spaces 
 11. Fundamentals Preparation 4 : Data Processing Techniques 
 12. Changepoint Detection Basics Chapters - [Book - Detection of Abrupt Changes Ch-2](https://docs.google.com/presentation/d/1iXaYZVFk-exzLrhFkULLsp9rYov2lKB-wqtYYZgmQAg/edit?slide=id.g365fba041ae_0_227#slide=id.g365fba041ae_0_227)
+
+
+Results : 
+
+1. Preliminary Results - 1 Processed Data Analysis Results using Ruptures - [Link](https://docs.google.com/presentation/d/1wyRNPNR1VTmX5hlMlGAFHBnWoSIPuzE6qKK-2E9-rkI/edit?usp=sharing)
+
 ---
 ## Research Paper Drafts
 1. Draft for ITW - [Link](https://www.overleaf.com/project/67d121a950d4fef4b0e5c5ab)
