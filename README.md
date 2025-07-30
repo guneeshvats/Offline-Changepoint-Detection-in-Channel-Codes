@@ -66,19 +66,27 @@ Ruptures :
 For PMF1-PMF2 : 
 1. MLE 
 
-For Neural Network Approach (Links of the Kaggle/Collab Notebooks): 
+For Neural Network Approach-I (Links of the Kaggle/Collab Notebooks): 
+`bash
+1DCNN with Res Block and Adaptive Pooling
+`
 1. T=5, p {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/t-5-cl-15)
-2. T=10, p {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link]
-3. T=20, p {0.01, 0.05, 0.1, 0.2}, Codewor Length = 15 : [Link]
-4. T=5, p {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]
+2. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link]()
+3. T=20, p ∈ {0.01, 0.05, 0.1, 0.2}, Codewor Length = 15 : [Link]()
+4. T=5, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]()
+5. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]()
+6. T=20, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]()
+
+Neural Network Approach-II
+
 
 ---
 
 ## Target Conferences/Journals
-1. ITW [Link](https://www.internationaltelecomsweek.com/) - April 11, 2025 
-2. GlobComm [link](https://globecom2025.ieee-globecom.org/) - April 1, 2025 
-3. WCNC [Link](https://wcnc2025.ieee-wcnc.org/call-papers) - September 
-4. IEEE ICC [Link](https://icc2025.ieee-icc.org/) - Mid October 
+1. ITW [Link]() - April 
+2. GlobComm [link]() - April 1 
+3. WCNC [Link]() - September 
+4. IEEE ICC [Link]() - Mid October 
 5. Journal IEEE Comm Letters [Link](https://www.comsoc.org/publications/journals/ieee-comml/ieee-communications-letters-submit-manuscript) 
 6. NCC - December
 7. COMSNET 
