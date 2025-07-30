@@ -84,12 +84,11 @@ For PMF1-PMF2 :
 Below are links to draft documents related to the project’s progress and literature review insights:
 
 1. **Selective Review of Offline Changepoint Detection Methods and Derivation of Pd**: [Google Slides Draft](https://docs.google.com/presentation/d/1yzx00AFN8aDG7L4OdEDbvaQSgfRj37CbkmYR_34oxAI/edit#slide=id.p)
-2. **Literature Review 2**: [Google Slides Draft](https://docs.google.com/presentation/d/1Q5Bpr53ahE7VJUO9jEYY8Y5o6oiOsMB28Xdz1r6LM04/edit#slide=id.p)
-3. **Literature Revuew 3**:
-4. Book : Detection of abrupt changes : [Link](https://docs.google.com/presentation/d/1PnksHSrUnm4IxZZjZRDIiH2pTVHfskBcWiLQSv_T2x0/edit?usp=sharing)
-5. Fundamentals Presentation 1 : Chapter 3 : Fundamentals of Statistical Signal Processing Vol-II Detection Theory - [Google Sheets](https://docs.google.com/presentation/d/1lgZ_AjC37yOn1BTG8N3TQjbQZ_DMGhDRBksqX38kGpw/edit?slide=id.p#slide=id.p) 
-6. Fundamentals Presentation 2 : Chapter 2 : An Introduction to Signal Detection and Estimation - H. Vincent Poor - [Google Sheets](https://docs.google.com/presentation/d/1DbZYZJOqG9VSFbPNlJv7c9F4wX4eOi_dql83JxxSCwQ/edit?usp=sharing)
-7. Changepoint Detection Basics Chapters - [Book - Detection of Abrupt Changes Ch-2](https://docs.google.com/presentation/d/1iXaYZVFk-exzLrhFkULLsp9rYov2lKB-wqtYYZgmQAg/edit?slide=id.g365fba041ae_0_227#slide=id.g365fba041ae_0_227)
+2. Book : Detection of abrupt changes - 1 : [Link](https://docs.google.com/presentation/d/1PnksHSrUnm4IxZZjZRDIiH2pTVHfskBcWiLQSv_T2x0/edit?usp=sharing)
+3. Book : Detection of abrupt changes - 2 : [Link](https://docs.google.com/presentation/d/1iXaYZVFk-exzLrhFkULLsp9rYov2lKB-wqtYYZgmQAg/edit?slide=id.g365fba041ae_0_227#slide=id.g365fba041ae_0_227)
+4. Fundamentals Presentation (Stephen M Kay) : Chapter 3 : Fundamentals of Statistical Signal Processing Vol-II Detection Theory - [Google Sheets](https://docs.google.com/presentation/d/1lgZ_AjC37yOn1BTG8N3TQjbQZ_DMGhDRBksqX38kGpw/edit?slide=id.p#slide=id.p) 
+5. David Hinkleys Paper - 1970 - [Link](https://docs.google.com/presentation/d/10IOkuVqAIMPgPNODWeXjyfC6MruyAOy3SdZtoe14s8A/edit?slide=id.p#slide=id.p)
+6. Bayesian Approach to Inference about a changepoint : [Link](https://docs.google.com/presentation/d/1kav9KW3tlR1cqhAe5ZjEAPWfs7MjHPLMCOK41FYLdz4/edit?slide=id.p#slide=id.p)
 
 
 Results : 
@@ -103,8 +102,9 @@ Results :
 ---
 ## Code Progress : 
 1. Data Generation Code (MATLAB)
-2. Unprocessed Codewords Data : NN (1dCNN)
+2. Unprocessed Codewords Data : NN (1dCNN), Transformers
 3. Processed Data : Ruptures and python Libraries
+4. Implementation of the Hinkley's Recursive Formulation
 ---
 
 ## Extra Important Resources and Links
