@@ -9,7 +9,6 @@ Minutes of the Meeting are tracked (from July, 2025 end) in `Miniutes_of_the_mee
 - [Overview](#Overview)
 - [Directory Structure](#Directory-Structure)
 - [Literature Review](#Literature-Review)
-- [Pre-Requisite Material](#Books)
 - [Code Progress](#Code-Progress)
 - [Target Conferences/Journals](#Target-Conferences/Journals)
 - [Presentations/Progress](#Presentations)
@@ -36,6 +35,7 @@ Offline changepoint detection is critical in identifying shifts in data behavior
 ## Literature Review
 Link of the Sheet where I am tracking the current updated list of Papers/Books/Resources being used for this project - [Link](https://docs.google.com/spreadsheets/d/1NH3iFS4BFo1hTYis5-IdWirP7EWbnc5gohk_1H-MvWg/edit?gid=0#gid=0)
 Below is a curated list of key papers and books, along with links for deeper reference.
+It is only a partial list rest of it is in the sheet link above. 
 
 | **S.No** | **Title**                                                                           | **Link**                                                                                                 |
 | -------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -57,20 +57,25 @@ Below is a curated list of key papers and books, along with links for deeper ref
 
 This section tracks the coding and experimentation journey for this project. Here, I document each method tried, the comparative insights gained, and the rationale behind choosing or discarding certain algorithms:
 
-- **Current Methods**: A summary of all methods tried so far, with notes on their effectiveness.
-- **Comparative Analysis**: Key reasons for selecting or ruling out specific algorithms.
+For Bernoulli Data : 
+Ruptures : 
+1. PELT, CF -> Bernoulli Cost
+2. Binary Segmentation -> Bernoulli Cost 
+3. MLE/Opt Method 
 
-For April Conferences 
-1. Statistical Method we are targetting - MLE Based Method --> `For April Deadline/mle.py`
+For PMF1-PMF2 : 
+1. MLE 
 
 ---
 
 ## Target Conferences/Journals
 1. ITW [Link](https://www.internationaltelecomsweek.com/) - April 11, 2025 
 2. GlobComm [link](https://globecom2025.ieee-globecom.org/) - April 1, 2025 
-3. WCNC [Link](https://wcnc2025.ieee-wcnc.org/call-papers) - Mid October 
+3. WCNC [Link](https://wcnc2025.ieee-wcnc.org/call-papers) - September 
 4. IEEE ICC [Link](https://icc2025.ieee-icc.org/) - Mid October 
 5. Journal IEEE Comm Letters [Link](https://www.comsoc.org/publications/journals/ieee-comml/ieee-communications-letters-submit-manuscript) 
+6. NCC - December
+7. COMSNET 
 
 
 ---
@@ -82,14 +87,9 @@ Below are links to draft documents related to the project’s progress and liter
 2. **Literature Review 2**: [Google Slides Draft](https://docs.google.com/presentation/d/1Q5Bpr53ahE7VJUO9jEYY8Y5o6oiOsMB28Xdz1r6LM04/edit#slide=id.p)
 3. **Literature Revuew 3**:
 4. Book : Detection of abrupt changes : [Link](https://docs.google.com/presentation/d/1PnksHSrUnm4IxZZjZRDIiH2pTVHfskBcWiLQSv_T2x0/edit?usp=sharing)
-5. Presentation of Preliminary Algorithm Results : [Link](https://docs.google.com/presentation/d/1ifJwTT7WChptNUmF1L-d0v3JG3_7ZUKZgfhd49x3zac/edit?usp=sharing)
-6. Inference about the changepoint in a sequence of binomial variables - 1970 : [Link](https://docs.google.com/presentation/d/1KxgF2PPAa2MZxR1SSUYHFBYZ1rNfyc6XSH2G6ofMlBc/edit?usp=sharing)
-7. GlobComm Submission Preparation - [Link](https://docs.google.com/presentation/d/13i0D1iV8yZ6qXQxqiX-G1czG4zSqdcSIYQr8xqTLsEI/edit?usp=sharing)
-8. Fundamentals Presentation 1 : Chapter 3 : Fundamentals of Statistical Signal Processing Vol-II Detection Theory - [Google Sheets](https://docs.google.com/presentation/d/1lgZ_AjC37yOn1BTG8N3TQjbQZ_DMGhDRBksqX38kGpw/edit?slide=id.p#slide=id.p) 
-9. Fundamentals Presentation 2 : Chapter 2 : An Introduction to Signal Detection and Estimation - H. Vincent Poor - [Google Sheets](https://docs.google.com/presentation/d/1DbZYZJOqG9VSFbPNlJv7c9F4wX4eOi_dql83JxxSCwQ/edit?usp=sharing)
-10. Fundamentals Preparation 3 : Vector Spaces 
-11. Fundamentals Preparation 4 : Data Processing Techniques 
-12. Changepoint Detection Basics Chapters - [Book - Detection of Abrupt Changes Ch-2](https://docs.google.com/presentation/d/1iXaYZVFk-exzLrhFkULLsp9rYov2lKB-wqtYYZgmQAg/edit?slide=id.g365fba041ae_0_227#slide=id.g365fba041ae_0_227)
+5. Fundamentals Presentation 1 : Chapter 3 : Fundamentals of Statistical Signal Processing Vol-II Detection Theory - [Google Sheets](https://docs.google.com/presentation/d/1lgZ_AjC37yOn1BTG8N3TQjbQZ_DMGhDRBksqX38kGpw/edit?slide=id.p#slide=id.p) 
+6. Fundamentals Presentation 2 : Chapter 2 : An Introduction to Signal Detection and Estimation - H. Vincent Poor - [Google Sheets](https://docs.google.com/presentation/d/1DbZYZJOqG9VSFbPNlJv7c9F4wX4eOi_dql83JxxSCwQ/edit?usp=sharing)
+7. Changepoint Detection Basics Chapters - [Book - Detection of Abrupt Changes Ch-2](https://docs.google.com/presentation/d/1iXaYZVFk-exzLrhFkULLsp9rYov2lKB-wqtYYZgmQAg/edit?slide=id.g365fba041ae_0_227#slide=id.g365fba041ae_0_227)
 
 
 Results : 
@@ -98,9 +98,7 @@ Results :
 
 ---
 ## Research Paper Drafts
-1. Draft for ITW - [Link](https://www.overleaf.com/project/67d121a950d4fef4b0e5c5ab)
-2. Draft for Comm Letter 
-
+1. Sample Draft - [Link](https://www.overleaf.com/8349162991grcjytshyrqg#9cd545)
 
 ---
 ## Code Progress : 
