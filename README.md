@@ -108,6 +108,8 @@ Below are links to draft documents related to the project’s progress and liter
 Results : 
 
 1. Preliminary Results - 1 Processed Data Analysis Results using Ruptures - [Link](https://docs.google.com/presentation/d/1wyRNPNR1VTmX5hlMlGAFHBnWoSIPuzE6qKK-2E9-rkI/edit?usp=sharing)
+2. Preliminary Results - 1 Unprocessed Data - Approach 1 (1DCNN with Res block and adaptive pooling) - [Link](https://docs.google.com/presentation/d/1KcciWTHpWIijZlj-yCmJKgQ4REtyWrCr6Z5-QIe8WD8/edit?usp=sharing)
+3. Implementation of Hinley's Paper - [Link]()
 
 ---
 ## Research Paper Drafts
