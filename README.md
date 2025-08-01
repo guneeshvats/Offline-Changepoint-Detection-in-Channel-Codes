@@ -6,7 +6,6 @@ This repository tracks the progress of my research project on offline changepoin
 
 ## Table of Contents
 - [Overview](#Overview)
-- [Directory Structure](#Directory-Structure)
 - [Literature Review](#Literature-Review)
 - [Code Progress](#Code-Progress)
 - [Target Conferences/Journals](#Target-Conferences/Journals)
@@ -21,14 +20,6 @@ This repository tracks the progress of my research project on offline changepoin
 ## Overview
 
 Offline changepoint detection is critical in identifying shifts in data behavior, particularly within channel codes. This repository serves as a record of the research process, tracking progress through: 
-
----
-
-## Directory Structure 
-
-
-
-
 
 --- 
 ## Literature Review
