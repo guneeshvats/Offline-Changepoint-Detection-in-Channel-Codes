@@ -129,6 +129,8 @@ Results :
 ## Extra Important Resources and Links
 1. CPD Project Related Topics and Research Papers List to be done - [Link](https://docs.google.com/spreadsheets/d/1NDgSKFA3LEqDTNt4PL07NPiguZQqH2xJB_vK9ANAU-A/edit?gid=0#gid=0)
 
-Feel free to reach out with questions, suggestions, or insights!
-[Email](mailto:guneesh.vats@research.iiit.ac.in)
-My Research Team : 
+
+Idea of the Project : 
+![Idea_1](images/page_1.jpeg)
+
+![Idea_2](images/page_2.jpeg)
