@@ -1,7 +1,6 @@
 # Offline Changepoint Detection in Channel Codes
 
-This repository tracks the progress of my research project on offline changepoint detection in linear block codes.
-Minutes of the Meeting are tracked (from July, 2025 end) in `Miniutes_of_the_meeting_(MoM)` folder. 
+This repository tracks the progress of my research project on offline changepoint detection in channel codes. 
 
 ---
 
@@ -34,6 +33,8 @@ Offline changepoint detection is critical in identifying shifts in data behavior
 --- 
 ## Literature Review
 Link of the Sheet where I am tracking the current updated list of Papers/Books/Resources being used for this project - [Link](https://docs.google.com/spreadsheets/d/1NH3iFS4BFo1hTYis5-IdWirP7EWbnc5gohk_1H-MvWg/edit?gid=0#gid=0)
+
+
 Below is a curated list of key papers and books, along with links for deeper reference.
 It is only a partial list rest of it is in the sheet link above. 
 
@@ -65,6 +66,7 @@ Ruptures :
 
 For PMF1-PMF2 : 
 1. MLE 
+2. Modified Cost Function
 
 For Neural Network Approach-I (Links of the Kaggle/Collab Notebooks): 
 ```
@@ -72,7 +74,7 @@ For Neural Network Approach-I (Links of the Kaggle/Collab Notebooks):
 ```
 1. T=5, p {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/t-5-cl-15)
 2. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/cpd-research-nn-approach-t-10-cl-15)
-3. T=20, p ∈ {0.01, 0.05, 0.1, 0.2}, Codewor Length = 15 : [Link]()
+3. T=20, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link]()
 4. T=5, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]()
 5. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]()
 6. T=20, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]()
@@ -90,6 +92,7 @@ Neural Network Approach-II
 5. Journal IEEE Comm Letters [Link](https://www.comsoc.org/publications/journals/ieee-comml/ieee-communications-letters-submit-manuscript) 
 6. NCC - December
 7. COMSNET 
+8. Globecomm
 
 
 ---
