@@ -63,8 +63,8 @@ For Neural Network Approach-I (Links of the Kaggle/Collab Notebooks):
 ```
 1DCNN with Res Block and Adaptive Pooling
 ```
-1. T=5, p {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/t-5-cl-15)
-2. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/cpd-research-nn-approach-t-10-cl-15)
+1. T=5, p {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-5-approach-1)
+2. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link]()
 3. T=20, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link]()
 4. T=5, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]()
 5. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]()
