@@ -64,11 +64,14 @@ For Neural Network Approach-I (Links of the Kaggle/Collab Notebooks):
 1DCNN with Res Block and Adaptive Pooling
 ```
 1. T=5, p {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-5-approach-1)
-2. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link]()
-3. T=20, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link]()
+2. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-7-approach-1)
+3. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link]()
 4. T=5, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]()
-5. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]()
-6. T=20, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]()
+5. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]()
+6. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]()
+4. T=5, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : [Link]()
+5. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : [Link]()
+6. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : [Link]()
 
 Neural Network Approach-II
 
@@ -82,8 +85,7 @@ Neural Network Approach-II
 4. IEEE ICC [Link]() - Mid October 
 5. Journal IEEE Comm Letters [Link](https://www.comsoc.org/publications/journals/ieee-comml/ieee-communications-letters-submit-manuscript) 
 6. NCC - December
-7. COMSNET 
-8. Globecomm
+7. COMSNET
 
 
 ---
