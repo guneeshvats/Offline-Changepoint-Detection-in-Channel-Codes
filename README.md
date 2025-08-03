@@ -59,7 +59,7 @@ For PMF1-PMF2 :
 1. MLE 
 2. Modified Cost Function
 
-For Neural Network Approach-I (Links of the Kaggle/Collab Notebooks): 
+### For Neural Network Approach-I (Links of the Kaggle/Collab Notebooks): 
 ```
 1DCNN with Res Block and Adaptive Pooling
 ```
@@ -73,8 +73,9 @@ For Neural Network Approach-I (Links of the Kaggle/Collab Notebooks):
 5. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : [Link]()
 6. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : [Link]()
 
-Neural Network Approach-II
-
+### Neural Network Approach-II
+(Only for p = 0.2)
+1. T = 5, p ∈ {0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-5-approach-2)
 
 ---
 
@@ -84,8 +85,8 @@ Neural Network Approach-II
 3. WCNC [Link]() - September 
 4. IEEE ICC [Link]() - Mid October 
 5. Journal IEEE Comm Letters [Link](https://www.comsoc.org/publications/journals/ieee-comml/ieee-communications-letters-submit-manuscript) 
-6. NCC - December
-7. COMSNET
+6. NCC - December 
+7. COMSNET 
 
 
 ---
