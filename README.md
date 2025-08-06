@@ -65,13 +65,13 @@ For PMF1-PMF2 :
 ```
 1. T=5, p {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-5-approach-1)
 2. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-7-approach-1)
-3. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link]()
-4. T=5, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]()
-5. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]()
-6. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link]()
-4. T=5, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : [Link]()
-5. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : [Link]()
-6. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : [Link]()
+3. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-10-approach-1)
+4. T=5, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : 
+5. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : 
+6. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : 
+4. T=5, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : 
+5. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : 
+6. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : 
 
 ### Neural Network Approach-II
 (Only for p = 0.2)
