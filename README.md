@@ -82,8 +82,8 @@ For PMF1-PMF2 :
 ## Target Conferences/Journals
 1. ITW [Link]() - April 
 2. GlobComm [link]() - April 1 
-3. WCNC [Link]() - September 
-4. IEEE ICC [Link]() - Mid October 
+3. WCNC [Link](https://wcnc2026.ieee-wcnc.org/group/21) - 14th September, 2026 
+4. IEEE ICC [Link](https://icc2026.ieee-icc.org/) - September last week - 2026 
 5. Journal IEEE Comm Letters [Link](https://www.comsoc.org/publications/journals/ieee-comml/ieee-communications-letters-submit-manuscript) 
 6. NCC - December 
 7. COMSNET 
