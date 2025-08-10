@@ -88,8 +88,17 @@ Purpose here is, What if we don't know the value of 'p' for the codewords in tha
 5. T = 7, p ∈ {0.001, 0.005, 0.01, 0.05} Codeword Length = 30 :
 6. T = 10, p ∈ {0.001, 0.005, 0.01, 0.05} Codeword Length = 30 :
 
-Comparative Plots to these Neural Networks : 
+Plots of Neural Networks : 
+1. Accuracy vs N'
+2. Accuracy vs N'
+3. Accuracy vs p
+4. Accuracy vs T 
 ---
+
+Comparative Plots to these Neural Networks : 
+1. For Type I : MLE, CUSUM / NN         Accuracy vs {fixed T/p} - whichever is not fixed - will be X-Axis
+2. For Type II : BinSeg, PELT / NN      Accuracy vs {fixed T/p}
+
 
 ## Target Conferences/Journals
 1. ITW [Link]() - April 
