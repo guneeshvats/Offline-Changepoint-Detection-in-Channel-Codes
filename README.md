@@ -59,23 +59,32 @@ For PMF1-PMF2 :
 1. MLE 
 2. Modified Cost Function
 
-### For Neural Network Approach-I (Links of the Kaggle/Collab Notebooks): 
+### For Neural Network Type - I (Distinct Neural Networks), Approach-I  
 ```
-1DCNN with Res Block and Adaptive Pooling
+Type I : NN are trained on only one values of p (BSC parameter) codewrords
+Approach I : 1DCNN with Res Block and Adaptive Pooling 
 ```
 1. T=5, p {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-5-approach-1)
 2. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-7-approach-1)
 3. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-10-approach-1)
 4. T=5, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t-5-approach-1)
 5. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t-7-approach-1)
-6. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : 
+6. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t-10-approach-1)
 4. T=5, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : 
-5. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : 
-6. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : 
+6. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : 
+7. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : 
 
-### Neural Network Approach-II
-(Only for p = 0.2)
-1. T = 5, p ∈ {0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-5-approach-2)
+### Neural Network ; Type - II (Diverse Neural Networks), Approach-I 
+```
+Type II : Model is trained on seqeuences of a fixed Lenght but many types of BSC parameter {0.001, 0.005, 0.01, 0.05, 0.1}
+Approach I : 1DCNN with Res Block and Adaptive Pooling 
+```
+1. T = 5, p ∈ {0.001, 0.005, 0.01, 0.05, 0.1}, Codeword Length = 15 : 
+2. T = 7, p ∈ {0.001, 0.005, 0.01, 0.05, 0.1}, Codeword Length = 15 : 
+3. T = 10, p ∈ {0.001, 0.005, 0.01, 0.05, 0.1} Codeword Length = 15 :
+4. T = 5, p ∈ {0.001, 0.005, 0.01, 0.05, 0.1} Codeword Length = 30 :
+5. T = 7, p ∈ {0.001, 0.005, 0.01, 0.05, 0.1} Codeword Length = 30 :
+6. T = 10, p ∈ {0.001, 0.005, 0.01, 0.05, 0.1} Codeword Length = 30 :
 
 ---
 
