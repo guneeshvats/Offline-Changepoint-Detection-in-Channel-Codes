@@ -79,13 +79,16 @@ Approach I : 1DCNN with Res Block and Adaptive Pooling
 Type II : Model is trained on seqeuences of a fixed Lenght but many types of BSC parameter {0.001, 0.005, 0.01, 0.05, 0.1}
 Approach I : 1DCNN with Res Block and Adaptive Pooling 
 ```
-1. T = 5, p ∈ {0.001, 0.005, 0.01, 0.05, 0.1}, Codeword Length = 15 : 
-2. T = 7, p ∈ {0.001, 0.005, 0.01, 0.05, 0.1}, Codeword Length = 15 : 
-3. T = 10, p ∈ {0.001, 0.005, 0.01, 0.05, 0.1} Codeword Length = 15 :
-4. T = 5, p ∈ {0.001, 0.005, 0.01, 0.05, 0.1} Codeword Length = 30 :
-5. T = 7, p ∈ {0.001, 0.005, 0.01, 0.05, 0.1} Codeword Length = 30 :
-6. T = 10, p ∈ {0.001, 0.005, 0.01, 0.05, 0.1} Codeword Length = 30 :
+Purpose here is, What if we don't know the value of 'p' for the codewords in that case we use this Neural Network 
 
+1. T = 5, p ∈ {0.001, 0.005, 0.01, 0.05}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/type2-cl-15-t-5)
+2. T = 7, p ∈ {0.001, 0.005, 0.01, 0.05}, Codeword Length = 15 : 
+3. T = 10, p ∈ {0.001, 0.005, 0.01, 0.05} Codeword Length = 15 :
+4. T = 5, p ∈ {0.001, 0.005, 0.01, 0.05} Codeword Length = 30 :
+5. T = 7, p ∈ {0.001, 0.005, 0.01, 0.05} Codeword Length = 30 :
+6. T = 10, p ∈ {0.001, 0.005, 0.01, 0.05} Codeword Length = 30 :
+
+Comparative Plots to these Neural Networks : 
 ---
 
 ## Target Conferences/Journals
