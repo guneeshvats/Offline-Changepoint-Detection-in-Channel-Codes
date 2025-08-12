@@ -116,7 +116,7 @@ Comparative Plots to these Neural Networks :
 4. IEEE ICC [Link](https://icc2026.ieee-icc.org/) - September last week - 2026 
 5. Journal IEEE Comm Letters [Link](https://www.comsoc.org/publications/journals/ieee-comml/ieee-communications-letters-submit-manuscript) 
 6. NCC - December 
-7. COMSNET - January 2026 - [Link](https://www.comsnets.org/)
+7. COMSNET - 15th October, 2025 - [Link](https://www.comsnets.org/)
 
 
 ---
