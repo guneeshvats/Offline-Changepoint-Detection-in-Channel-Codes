@@ -56,7 +56,7 @@ This section tracks the coding and experimentation journey for this project. Her
 
 - When Parameters are not known
 1. BinSeg + Bernoulli CF 
-2. PELT
+2. PELT + Bernoulli CF 
 
 
 For PMF1-PMF2 : 
@@ -97,7 +97,11 @@ Plots of Neural Networks :
 1. Accuracy vs N'
 2. Accuracy vs N'
 3. Accuracy vs p
-4. Accuracy vs T 
+4. Accuracy vs T
+
+Comparative Plots 
+1. For known p value - comparison with - MLE & CUSUM
+2. For Unknown p value - comparison with - BinSeg & PELT
 ---
 
 Comparative Plots to these Neural Networks : 
