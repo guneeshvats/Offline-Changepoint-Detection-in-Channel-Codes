@@ -49,17 +49,22 @@ It is only a partial list rest of it is in the sheet link above.
 
 This section tracks the coding and experimentation journey for this project. Here, I document each method tried, the comparative insights gained, and the rationale behind choosing or discarding certain algorithms:
 
-For Bernoulli Data : 
-Ruptures : 
-1. PELT, CF -> Bernoulli Cost
-2. Binary Segmentation -> Bernoulli Cost 
-3. MLE/Opt Method 
+### For Processed Data : (Bernoulli Data) 
+- When Ber parameters are known to us
+1. MLE 
+2. CUSUM 
+
+- When Parameters are not known
+1. BinSeg + Bernoulli CF 
+2. PELT
+
 
 For PMF1-PMF2 : 
-1. MLE 
-2. Modified Cost Function
+(On Hold for now) 
 
-### For Neural Network Type - I (Distinct Neural Networks), Approach-I  
+### For Unprocessed Data : 
+
+#### For Neural Network Type - I (Distinct Neural Networks), Approach-I  
 ```
 Type I : NN are trained on only one values of p (BSC parameter) codewrords
 Approach I : 1DCNN with Res Block and Adaptive Pooling 
@@ -74,7 +79,7 @@ Approach I : 1DCNN with Res Block and Adaptive Pooling
 6. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : 
 7. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : 
 
-### Neural Network ; Type - II (Diverse Neural Networks), Approach-I 
+#### Neural Network ; Type - II (Diverse Neural Networks), Approach-I 
 ```
 Type II : Model is trained on seqeuences of a fixed Lenght but many types of BSC parameter {0.001, 0.005, 0.01, 0.05, 0.1}
 Approach I : 1DCNN with Res Block and Adaptive Pooling 
