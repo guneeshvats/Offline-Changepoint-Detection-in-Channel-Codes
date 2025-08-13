@@ -75,7 +75,7 @@ Approach I : 1DCNN with Res Block and Adaptive Pooling
 4. T=5, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t-5-approach-1)
 5. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t-7-approach-1)
 6. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31 : [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t-10-approach-1)
-4. T=5, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : 
+4. T=5, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : [Link](https://www.kaggle.com/code/guneeshvats/cl-63-t-5-approach-1)
 6. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : 
 7. T=10, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63 : 
 
