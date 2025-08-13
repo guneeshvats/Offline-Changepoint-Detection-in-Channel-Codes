@@ -9,6 +9,7 @@
 #   • p00 and p00' (Eqs. 2.18 & 2.21)
 #   • Recursions for q_{l,m}, p_{l,m} and q'_{l,m}, p'_{l,m} (Eqs. 2.15, 2.17, 2.19, 2.20)
 #   • Plots and CSVs for p_{l,m} and p'_{l,m}
+#   • Optionally, save all results and plots in a zip file
 # ---------------------------------------------------------------------
 
 import numpy as np
@@ -16,6 +17,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import math
 import os
+import zipfile
 
 # Helpers
 
@@ -360,6 +362,26 @@ def plot_detection_comparison(Xt, tau_true, tau_hat_xt, tau_hat_walk, outdir):
 
 # ====================== Main ======================
 
+def zip_outputs(outdir, zipname=None):
+    """
+    Zip all files in outdir into a single zip file.
+    Returns the path to the zip file.
+    """
+    if zipname is None:
+        zipname = os.path.join(outdir, "all_outputs.zip")
+    else:
+        zipname = os.path.join(outdir, zipname)
+    with zipfile.ZipFile(zipname, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        for root, dirs, files in os.walk(outdir):
+            for file in files:
+                if file == os.path.basename(zipname):
+                    continue  # Don't include the zip file itself
+                file_path = os.path.join(root, file)
+                arcname = os.path.relpath(file_path, outdir)
+                zipf.write(file_path, arcname)
+    print(f"[saved zip] {zipname}")
+    return zipname
+
 def main():
     # ----------- change inputs here -----------
     T       = 120
@@ -385,8 +407,6 @@ def main():
     plot_Xt(Xt, tau, tau_hat, outdir)
 
     # 3) Build walks from X_t differences (Eq. 2.6–2.7) and tau_hat via (2.13)
-    # left, right = build_walks_from_X(Xt, tau, theta0, theta1)
-    # tau_hat_walk = tau_hat_from_walks(tau, left, right)
     t_star = tau_hat_from_Xt(Xt, tie_rule=tieRule)            # center at MLE argmax
     left, right = build_walks_from_X(Xt, t_star, theta0, theta1)
     tau_hat_walk = tau_hat_from_walks(t_star, left, right)
@@ -434,6 +454,8 @@ def main():
     print(f"Σ p_right = {df_p_right['prob'].sum():.6f}; add atom p00' = {p00p:.6f}")
     print(f"\nAll outputs saved in: {os.path.abspath(outdir)}")
 
+    # 7) Save all results and plots in a zip file
+    zip_outputs(outdir)
 
 if __name__ == "__main__":
     main()
