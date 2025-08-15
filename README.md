@@ -12,8 +12,6 @@ This repository tracks the progress of my research project on offline changepoin
 - [Presentations/Progress](#Presentations)
 - [Research Paper Drafts](#Research-Paper-Drafts)
 - [Extra Resources and Links](#Extra-Important-Resources-and-Links)
-- [References](#References)
-
 
 ---
 
@@ -67,7 +65,8 @@ For PMF1-PMF2 :
 #### For Neural Network Type - I (Distinct Neural Networks), Approach-I  
 ```
 Type I : NN are trained on only one values of p (BSC parameter) codewrords
-Approach I : 1DCNN with Res Block and Adaptive Pooling 
+Approach I : 1DCNN with Res Block and Adaptive Pooling
+Approach II : (Only for n=63 BCH Codes) 
 ```
 1. T=5, p {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-5-approach-1)
 2. T=7, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15 : [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-7-approach-1)
@@ -82,7 +81,7 @@ Approach I : 1DCNN with Res Block and Adaptive Pooling
 #### Neural Network ; Type - II (Diverse Neural Networks), Approach-I 
 ```
 Type II : Model is trained on seqeuences of a fixed Lenght but many types of BSC parameter {0.001, 0.005, 0.01, 0.05, 0.1}
-Approach I : 1DCNN with Res Block and Adaptive Pooling 
+Approach I : Still figuring out
 ```
 Purpose here is, What if we don't know the value of 'p' for the codewords in that case we use this Neural Network 
 
@@ -100,20 +99,15 @@ Plots of Neural Networks :
 4. Accuracy vs T
 
 Comparative Plots 
-1. For known p value - comparison with - MLE & CUSUM
-2. For Unknown p value - comparison with - BinSeg & PELT
+1. For known p value - Type I NN - comparison with - MLE & CUSUM : Accuracy vs {fixed T/p} - whichever is not fixed - will be X-Axis
+2. For Unknown p value - Type II NN - comparison with - BinSeg & PELT :  Accuracy vs {fixed T/p}
 ---
-
-Comparative Plots to these Neural Networks : 
-1. For Type I : MLE, CUSUM / NN         Accuracy vs {fixed T/p} - whichever is not fixed - will be X-Axis
-2. For Type II : BinSeg, PELT / NN      Accuracy vs {fixed T/p}
-
 
 ## Target Conferences/Journals
 1. ITW [Link]() - April 
-2. GlobComm [link]() - April 1 
-3. WCNC [Link](https://wcnc2026.ieee-wcnc.org/group/21) - 14th September, 2026 
-4. IEEE ICC [Link](https://icc2026.ieee-icc.org/) - September last week - 2026 
+2. GlobComm [link]() - April 
+3. WCNC [Link](https://wcnc2026.ieee-wcnc.org/group/21) - 15th September, 2025 
+4. IEEE ICC [Link](https://icc2026.ieee-icc.org/) - 29tg September week - 2025 
 5. Journal IEEE Comm Letters [Link](https://www.comsoc.org/publications/journals/ieee-comml/ieee-communications-letters-submit-manuscript) 
 6. NCC - December 
 7. COMSNET - 15th October, 2025 - [Link](https://www.comsnets.org/)
@@ -136,11 +130,12 @@ Results :
 
 1. Preliminary Results - 1 Processed Data Analysis Results using Ruptures - [Link](https://docs.google.com/presentation/d/1wyRNPNR1VTmX5hlMlGAFHBnWoSIPuzE6qKK-2E9-rkI/edit?usp=sharing)
 2. Preliminary Results - 1 Unprocessed Data - Approach 1 (1DCNN with Res block and adaptive pooling) - [Link](https://docs.google.com/presentation/d/1KcciWTHpWIijZlj-yCmJKgQ4REtyWrCr6Z5-QIe8WD8/edit?usp=sharing)
-3. Implementation of Hinley's Paper - [Link]()
+3. Implementation of Hinley's Paper - The code and the results are in the folder - `Hunkley Implementation` folder in the root directory.
 
 ---
 ## Research Paper Drafts
 1. Sample Draft - [Link](https://www.overleaf.com/8349162991grcjytshyrqg#9cd545)
+2. Other very similar work - [Link](https://www.overleaf.com/project/67d121a950d4fef4b0e5c5ab)
 
 ---
 ## Code Progress : 
