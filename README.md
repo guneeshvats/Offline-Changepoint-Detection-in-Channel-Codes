@@ -179,14 +179,6 @@ Purpose: Handle the case when p is unknown at inference time.
 
 **Idea of the Project:**
 
-### Markdown image embeds (default sizing)
-
-![Idea\_1](images/page_1.jpeg)
-
-![Idea\_2](images/page_2.jpeg)
-
-### HTML image embeds with sizing options
-
 <!-- You can adjust width/height as needed (only width shown below for responsiveness). -->
 
 <p>
