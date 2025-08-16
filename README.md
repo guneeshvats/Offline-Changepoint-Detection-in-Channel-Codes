@@ -9,16 +9,13 @@ This repository tracks the progress of my research project on **offline changepo
 * [Overview](#overview)
 * [Literature Review](#literature-review)
 * [Code Progress (Processed & Unprocessed Data)](#code-progress-processed--unprocessed-data)
-
   * [Processed Data: Bernoulli Data](#processed-data-bernoulli-data)
   * [Unprocessed Data: Neural Networks](#unprocessed-data-neural-networks)
-
     * [Type I (Distinct Neural Networks), Approach I](#type-i-distinct-neural-networks-approach-i)
     * [Type II (Diverse Neural Networks), Approach I](#type-ii-diverse-neural-networks-approach-i)
   * [Comparative Plots](#comparative-plots)
 * [Target Conferences/Journals](#target-conferencesjournals)
 * [Presentations / Progress](#presentations--progress)
-
   * [Results](#results)
 * [Research Paper Drafts](#research-paper-drafts)
 * [Code Progress (Components Summary)](#code-progress-components-summary)
@@ -99,6 +96,7 @@ Approach II: (Only for n = 63 BCH Codes)
 Type II: Model is trained on sequences of a fixed length but with multiple BSC parameters p ∈ {0.001, 0.005, 0.01, 0.05, 0.1} (and intermediate values below).
 Approach I: Still figuring out.
 Purpose: Handle the case when p is unknown at inference time.
+Approach III:
 ```
 
 1. **T = 5**, p ∈ {0.001, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05}, Codeword Length = 15: [Link](https://www.kaggle.com/code/guneeshvats/type2-cl-15-t-5)
