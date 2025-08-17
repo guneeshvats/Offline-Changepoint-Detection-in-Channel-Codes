@@ -96,7 +96,7 @@ Approach II: (Only for n = 63 BCH Codes)
 Type II: Model is trained on sequences of a fixed length but with multiple BSC parameters p ∈ {0.001, 0.005, 0.01, 0.05, 0.1} (and intermediate values below).
 Approach I: Still figuring out.
 Purpose: Handle the case when p is unknown at inference time.
-Approach III:
+Approach III: CNN & transformer hybrid model
 ```
 
 1. **T = 5**, p ∈ {0.001, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05}, Codeword Length = 15: [Link](https://www.kaggle.com/code/guneeshvats/type2-cl-15-t-5)
