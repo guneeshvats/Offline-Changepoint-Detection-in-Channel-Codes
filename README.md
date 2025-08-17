@@ -83,12 +83,12 @@ Approach II: (Only for n = 63 BCH Codes)
 1. **T = 5**, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15: [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-5-approach-1)
 2. **T = 7**, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15: [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-7-approach-1)
 3. **T = 10**, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15: [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-10-approach-1)
-4. **T = 5**, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31: [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t-5-approach-1)
-5. **T = 7**, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31: [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t-7-approach-1)
-6. **T = 10**, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 31: [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t-10-approach-1)
-7. **T = 5**, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63: [Link](https://www.kaggle.com/code/guneeshvats/cl-63-t-5-approach-1)
-8. **T = 7**, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63:
-9. **T = 10**, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 63:
+4. **T = 5**, p ∈ {0.001, 0.005, 0.01, 0.05}, Codeword Length = 31: [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t-5-approach-1)
+5. **T = 7**, p ∈ {0.001, 0.005, 0.01, 0.05}, Codeword Length = 31: [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t-7-approach-1)
+6. **T = 10**, p ∈ {0.001, 0.005, 0.01, 0.05}, Codeword Length = 31: [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t-10-approach-1)
+7. **T = 5**, p ∈ {0.001, 0.005, 0.01, 0.05}, Codeword Length = 63: [Link](https://www.kaggle.com/code/guneeshvats/cl-63-t-5-approach-1)
+8. **T = 7**, p ∈ {0.001, 0.005, 0.01, 0.05}, Codeword Length = 63:
+9. **T = 10**, p ∈ {0.001, 0.005, 0.01, 0.05}, Codeword Length = 63:
 
 #### Type II (Diverse Neural Networks), Approach I
 
