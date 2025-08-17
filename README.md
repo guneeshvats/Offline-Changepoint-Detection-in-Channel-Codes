@@ -160,7 +160,7 @@ Approach III: CNN & transformer hybrid model
 
 ## Code Progress (Components Summary)
 
-1. **Data Generation Code** (MATLAB)
+1. **Data Generation Code** (MATLAB code) - BCH, LDPC
 2. **Unprocessed Codewords Data:** Neural Networks (1D CNN), Transformers
 3. **Processed Data:** Ruptures and Python libraries
 4. **Implementation of Hinkley’s Recursive Formulation**
