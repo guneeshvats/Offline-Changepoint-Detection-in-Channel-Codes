@@ -153,8 +153,8 @@ Approach III: CNN & transformer hybrid model
 
 ## Research Paper Drafts
 
-1. Sample Draft — [Link](https://www.overleaf.com/8349162991grcjytshyrqg#9cd545)
-2. Other very similar work — [Link](https://www.overleaf.com/project/67d121a950d4fef4b0e5c5ab)
+1. Draft Version 0 — [Link](https://www.overleaf.com/project/68833e7c90f485946f428a2a)
+2. Other similar work's Draft — [Link](https://www.overleaf.com/project/67d121a950d4fef4b0e5c5ab)
 
 ---
 
