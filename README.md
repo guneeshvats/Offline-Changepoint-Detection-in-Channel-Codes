@@ -180,8 +180,8 @@ Approach III: CNN & transformer hybrid model
 <!-- You can adjust width/height as needed (only width shown below for responsiveness). -->
 
 <p>
-  <img src="images/page_1.jpeg" alt="Idea_1" width="600" />
+  <img src="images/page_1.jpeg" alt="Idea_1" width="500" />
 </p>
 <p>
-  <img src="images/page_2.jpeg" alt="Idea_2" width="600" />
+  <img src="images/page_2.jpeg" alt="Idea_2" width="500" />
 </p>
