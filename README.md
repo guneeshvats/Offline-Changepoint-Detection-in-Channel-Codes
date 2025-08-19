@@ -1,6 +1,6 @@
 # Offline Changepoint Detection in Channel Codes
 
-This repository tracks the progress of my research project on **offline changepoint detection in channel codes**. It consolidates literature, code experiments, results, slides, and submission targets.
+This repository tracks the progress of my research project on **offline changepoint detection in channel codes(BCH, LDPC) therough BSC/AWGN Channels**. It consolidates literature, code experiments, results, slides, and submission targets.
 
 ---
 
