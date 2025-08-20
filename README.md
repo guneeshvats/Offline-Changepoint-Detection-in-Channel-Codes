@@ -185,3 +185,6 @@ Approach III: CNN & transformer hybrid model
 <p>
   <img src="images/page_2.jpeg" alt="Idea_2" width="500" />
 </p>
+
+
+## Refrences 
