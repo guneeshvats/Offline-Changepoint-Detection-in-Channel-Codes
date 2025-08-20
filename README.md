@@ -65,8 +65,8 @@ This section tracks the coding and experimentation journey for this project. It 
 
 * **When parameters are not known**
 
-  1. BinSeg + Bernoulli CF
-  2. PELT + Bernoulli CF
+  1. BinSeg - Search Method + Bernoulli Cost Function 
+  2. PELT + Bernoulli Cost Function 
 
 **For PMF1–PMF2:** *(On Hold for now)*
 
