@@ -32,7 +32,7 @@ Offline changepoint detection is critical in identifying shifts in data behavior
 
 ## Literature Review
 
-**Master tracking sheet (continuously updated):** [Link](https://docs.google.com/spreadsheets/d/1NH3iFS4BFo1hTYis5-IdWirP7EWbnc5gohk_1H-MvWg/edit?gid=0#gid=0)
+**Master tracking sheet - Has list of books, papers & Lecture Link (continuously updated):** [Link](https://docs.google.com/spreadsheets/d/1NH3iFS4BFo1hTYis5-IdWirP7EWbnc5gohk_1H-MvWg/edit?gid=0#gid=0)
 
 Below is a curated (partial) list of key papers and books. The full list is maintained in the sheet above.
 
