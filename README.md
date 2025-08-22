@@ -60,7 +60,7 @@ This section tracks the coding and experimentation journey for this project. It 
 
 * **When Bernoulli parameters are known**
 
-  1. MLE
+  1. MLE Method
   2. CUSUM
 
 * **When parameters are not known**
