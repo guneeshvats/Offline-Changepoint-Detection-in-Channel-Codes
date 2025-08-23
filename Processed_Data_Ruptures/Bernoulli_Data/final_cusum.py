@@ -38,18 +38,12 @@ def detect_changepoint_cusum(seq, q1, q2):
         tau_hat: Estimated changepoint index (int).
     """
     # Compute the log-likelihood ratio for each sample
-    llr_seq = np.array([
-        np.log(q2 / q1) * x + np.log((1 - q2) / (1 - q1)) * (1 - x)
-        for x in seq
-    ])
-    # Cumulative sum of LLRs
-    S = np.cumsum(llr_seq)
-    # Running minimum of the cumulative sum
-    min_S = np.minimum.accumulate(S)
-    # CUSUM statistic: difference between current S and its running minimum
-    G = S - min_S
-    # The changepoint is estimated as the index where G is maximized
-    tau_hat = np.argmax(G)
+        # LLR = log f2/f1  (your definition)
+    llr = np.log(q2/q1) * seq + np.log((1 - q2)/(1 - q1)) * (1 - seq)
+    S = np.cumsum(llr)
+
+    # MLE tau is where S_t is minimal; use [: -1] so tau ∈ {1,...,N-1}
+    tau_hat = int(np.argmin(S[:-1]) + 1)
     return tau_hat
 
 # --- Simulation Framework ---

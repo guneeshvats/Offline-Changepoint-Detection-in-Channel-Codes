@@ -39,7 +39,8 @@ def smart_buffer(N):
     Returns:
         int: Buffer size to use for changepoint placement.
     """
-    return max(1, N // 5) if N <= 30 else 10
+    # return max(1, N // 5) if N <= 30 else 10
+    return 0
 
 def plot_accuracy(all_accuracies, max_tolerance, seq_lengths, q1, q2, title):
     """
@@ -202,15 +203,13 @@ class CostBernoulli:
             float: Negative log-likelihood cost for the segment.
         """
         segment = self.signal[start:end]
-        if len(segment) == 0:
-            return 0
-        p_hat = np.mean(segment)
-        if p_hat in [0, 1]:
-            # If the segment is all 0s or all 1s, log-likelihood is zero (no uncertainty)
-            return 0
-        n1 = np.sum(segment)
-        n0 = len(segment) - n1
-        return -(n1 * np.log(p_hat) + n0 * np.log(1 - p_hat))
+        n = segment.size
+        if n <= 0:
+            return 0.0
+        n1 = int(segment.sum())
+        n0 = n - n1
+        p = (n1 + 0.5) / (n + 1.0)            # Jeffreys smoothing
+        return -(n1 * np.log(p) + n0 * np.log(1 - p))
 
 def detect_ruptures_binseg(seq):
     """
@@ -274,7 +273,8 @@ def detect_ruptures_pelt(seq):
     """
     model = CostBernoulli().fit(seq)
     algo = rpt.Pelt(custom_cost=model, min_size=1).fit(seq)
-    penalty = 0.1 * np.log(len(seq))  # Penalty parameter for PELT
+    beta = 0.5
+    penalty = beta * np.log(len(seq))  # Penalty parameter for PELT
     result = algo.predict(pen=penalty)
     # Remove changepoints at the end (not valid)
     valid_cps = [cp for cp in result if cp < len(seq)]
@@ -329,13 +329,10 @@ def detect_changepoint_cusum(seq, q1, q2):
         int: Detected changepoint index (location of maximum CUSUM statistic).
     """
     # Compute log-likelihood ratio for each observation
-    llr_seq = np.array([
-        np.log(q2 / q1) * x + np.log((1 - q2) / (1 - q1)) * (1 - x)
-        for x in seq
-    ])
-    S = np.cumsum(llr_seq)  # Cumulative sum of LLRs
-    G = S - np.minimum.accumulate(S)  # CUSUM statistic
-    return np.argmax(G)  # Index of maximum CUSUM statistic
+    llr = np.array([np.log(q2/q1) if x==1 else np.log((1-q2)/(1-q1)) for x in seq])
+    S = np.cumsum(llr)
+    G = S - np.minimum.accumulate(S)
+    return int(np.argmax(G))
 
 def run_simulation_cusum(N, q1, q2, num_iterations, max_tolerance):
     """
@@ -563,21 +560,21 @@ def unique_method_plot(method="mle"):
 # =============================================================================
 # compare_methods_accuracy_vs_N(
 #     methods=["mle", "binseg", "pelt", "cusum"],
-#     seq_lengths=[10, 15, 20, 50, 100, 200],
+#     seq_lengths=[3, 5, 7, 10, 15, 20, 25, 30, 35, 40, 45, 50],
 #     w_h=4,
 #     epsilon=0.01,
-#     delta=5, # tolerance window
+#     delta=0, # tolerance window
 #     num_iterations=1000
 # )
 
 # =============================================================================
 # Example Usage of Comparison Type-II: Accuracy vs Epsilon (BSC Parameter) 
 # =============================================================================
-# compare_methods_accuracy_vs_epsilon(
-#     methods=["mle", "binseg", "pelt", "cusum"],
-#     epsilon_values=[0.01, 0.05, 0.1, 0.2, 0.3, 0.4],
-#     w_h=4,
-#     N=100,
-#     delta=5,
-#     num_iterations=1000
-# )
+compare_methods_accuracy_vs_epsilon(
+    methods=["mle", "binseg", "pelt", "cusum"],
+    epsilon_values=[0.01, 0.05, 0.1, 0.2, 0.3, 0.4],
+    w_h=4,
+    N=100,
+    delta=0,
+    num_iterations=1000
+)

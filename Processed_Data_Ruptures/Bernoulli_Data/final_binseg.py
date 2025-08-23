@@ -5,23 +5,22 @@ import ruptures as rpt
 import pandas as pd
 
 class CostBernoulli:
-    """Custom cost function for Bernoulli-distributed binary sequences."""
+    """Bernoulli NLL with Jeffreys smoothing (alpha=beta=0.5)."""
     def fit(self, signal):
-        self.signal = np.array(signal).astype(int)
+        self.signal = np.asarray(signal, dtype=int).ravel()
         self.n = len(self.signal)
         return self
 
     def error(self, start, end):
-        segment = self.signal[start:end]
         n = end - start
-        if n == 0:
-            return 0
-        p_hat = np.mean(segment)
-        if p_hat == 0 or p_hat == 1:
-            return 0  # No variability
-        n1 = np.sum(segment)
+        if n <= 0:
+            return 0.0
+        segment = self.signal[start:end]
+        n1 = int(segment.sum())
         n0 = n - n1
-        return - (n1 * np.log(p_hat) + n0 * np.log(1 - p_hat))
+        # Jeffreys-smoothed p in (0,1)
+        p = (n1 + 0.5) / (n + 1.0)
+        return -(n1 * np.log(p) + n0 * np.log(1.0 - p))
 
     def cost(self, start, end):
         return self.error(start, end)
@@ -34,10 +33,11 @@ def generate_sequence(N, changepoint, q1, q2):
 
 def smart_buffer(N):
     """Choose a smart buffer based on sequence length."""
-    if N <= 30:
-        return max(1, N // 5)
-    else:
-        return 10
+    # if N <= 30:
+    #     return max(1, N // 5)
+    # else:
+    #     return 10
+    return 0 
 
 def detect_with_ruptures(seq):
     """Use ruptures Binary Segmentation with custom Bernoulli cost to detect changepoint."""
@@ -124,7 +124,7 @@ def plot_accuracy(all_accuracies, max_tolerance, seq_lengths, q1, q2):
 
 if __name__ == "__main__":
     # --- CONFIGURATION ---
-    epsilon = 0.20        # BSC parameter
+    epsilon = 0.01        # BSC parameter
     w_h = 4              # Hamming weight of vector h
     seq_lengths = [10, 15, 20, 50, 100, 200]  # List of sequence lengths to test
     num_iterations = 1000  # Iterations per tolerance level

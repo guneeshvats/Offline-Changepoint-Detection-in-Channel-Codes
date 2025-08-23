@@ -28,10 +28,11 @@ def detect_changepoint(seq, q1, q2, min_cp, max_cp):
 
 def smart_buffer(N):
     """Choose a smart buffer based on sequence length."""
-    if N <= 30:
-        return max(1, N // 5)
-    else:
-        return 10
+    # if N <= 30:
+    #     return max(1, N // 5)
+    # else:
+    #     return 10
+    return 0
 
 def run_simulation_mle(N, q1, q2, num_iterations, max_tolerance):
     """Run simulations using MLE and compute detection accuracy."""

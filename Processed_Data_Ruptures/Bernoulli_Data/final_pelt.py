@@ -19,8 +19,10 @@ class CostBernoulli:
         p_hat = np.mean(segment)
         if p_hat == 0 or p_hat == 1:
             return 0  # No variability
+        # Jeffreys prior for stability
         n1 = np.sum(segment)
         n0 = n - n1
+        p = (n1 + 0.5) / (n + 1.0)   # avoids p=0 or 1
         return - (n1 * np.log(p_hat) + n0 * np.log(1 - p_hat))
 
     def cost(self, start, end):
@@ -34,27 +36,32 @@ def generate_sequence(N, changepoint, q1, q2):
 
 def smart_buffer(N):
     """Choose a smart buffer based on sequence length."""
-    if N <= 30:
-        return max(1, N // 5)
-    else:
-        return 10
+    # if N <= 30:
+    #     return max(1, N // 5)
+    # else:
+    #     return 10
+    return 0 
+    # return 1 
 
 def detect_with_ruptures(seq):
     """Use ruptures PELT with custom Bernoulli cost to detect changepoint."""
     model = CostBernoulli().fit(seq)
-    algo = rpt.Pelt(custom_cost=model, min_size=1).fit(seq)
     N = len(seq)
-    beta = 0.1
+
+    # Dynamic min_size
+    min_size = 1 if N < 10 else 3
+
+    algo = rpt.Pelt(custom_cost=model, min_size=1).fit(seq)
+
+    # BIC-style penalty
+    beta = 0.5   # beta = 0.5 
     penalty = beta * np.log(N)
     result = algo.predict(pen=penalty)
     #    if the detected changepoint is at the end of the sequence, it’s removed.
     #    That means no valid changepoint detected in that iteration.
-    true_cps = [cp for cp in result if cp < len(seq)]     
+    true_cps = [cp for cp in result if cp < N]     
     #    Return only the first cp from the list 
-    if true_cps:
-        return true_cps[0]
-    else:
-        return None
+    return true_cps[0] if true_cps else None
 
 def run_simulation_ruptures(N, q1, q2, num_iterations, max_tolerance):
     """Run simulations using ruptures and compute detection accuracy."""
@@ -127,7 +134,7 @@ if __name__ == "__main__":
     # --- CONFIGURATION ---
     epsilon = 0.01        # BSC parameter
     w_h = 4              # Hamming weight of vector h
-    seq_lengths = [10, 15, 20, 50, 100, 200]  # List of sequence lengths to test
+    seq_lengths = [10, 15, 20, 50, 100, 150, 200]  # List of sequence lengths to test
     num_iterations = 1000  # Iterations per tolerance level
     max_tolerance = 10    # Maximum tolerance window
 
