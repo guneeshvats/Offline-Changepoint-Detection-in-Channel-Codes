@@ -59,7 +59,6 @@ def simulate_bernoulli_sequence(T, tau, theta0, theta1, seed=123):
 
 
 # ====================== Eq. (2.2) ======================
-
 def compute_Xt(R, theta0, theta1):
     """
     Contrast sequence X_t (Eq. 2.2), for t=1..T-1:
@@ -267,6 +266,130 @@ def q_p_right(theta1, Phi, N, p00p):
     return q, p
 
 
+
+
+# ====== Section 3: Asymptotic distribution pi_n (Eq. 3.1) ======
+
+def _sorted_cdf_arrays_from_pdict(pdict, phi, which):
+    """
+    which = 'left'  -> order by  (-l + phi*m)   (for p_{jk} inner sums in pi_{+n})
+          = 'right' -> order by  ( l - phi*m)   (for p'_{jk} inner sums in pi_{-n})
+    Returns (vals_sorted, cums_sorted), both numpy arrays.
+    """
+    import numpy as np
+    vals, probs = [], []
+    for (l, m), pr in pdict.items():
+        if pr <= 0.0:
+            continue
+        if which == 'left':
+            v = -l + phi * m
+        else:  # 'right'
+            v = l - phi * m
+        vals.append(float(v))
+        probs.append(float(pr))
+    if not vals:
+        return np.array([0.0]), np.array([0.0])
+    vals = np.asarray(vals)
+    probs = np.asarray(probs)
+    order = np.argsort(vals)
+    vals = vals[order]
+    cums = np.cumsum(probs[order])
+    return vals, cums
+
+def _cdf_less_than(thresh, vals_sorted, cums_sorted, atom_prob=0.0, atom_at_zero=True):
+    """
+    Returns sum of masses with value < thresh, plus atom at 0 if thresh>0.
+    """
+    idx = np.searchsorted(vals_sorted, thresh, side='left')
+    mass = float(cums_sorted[idx-1]) if idx > 0 else 0.0
+    if atom_at_zero and thresh > 0:
+        mass += float(atom_prob)
+    return mass
+
+def compute_pi_distribution(phi, p_left, p_right, p00, p00p, n_max):
+    """
+    Implements Eq. (3.1):
+      pi_0 = p00 * p00p
+      pi_{-n} = sum_{l=0}^n p_{l, n-l} * sum_{j,k >=0, j-phi*k < -l + phi(n-l)} p'_{jk}
+      pi_{+n} = sum_{l=0}^n p'_{l, n-l} * sum_{j,k >=0, -j+phi*k <  l - phi(n-l)} p_{jk}
+    """
+    # Precompute fast CDFs for the inner infinite sums
+    # p: order by (-j + phi*k) ; p': order by (j - phi*k)
+    vals_p, cums_p = _sorted_cdf_arrays_from_pdict(p_left,  phi, which='left')
+    vals_pp,cums_pp= _sorted_cdf_arrays_from_pdict(p_right, phi, which='right')
+
+    pi = {0: float(p00 * p00p)}
+
+    # helper to get dictionary value safely
+    def _get(d, l, m):
+        return float(d.get((l, m), 0.0))
+
+    for n in range(1, n_max+1):
+        # pi_{-n}
+        s_neg = 0.0
+        for l in range(0, n+1):
+            m = n - l
+            outer = _get(p_left, l, m)
+            if outer == 0.0:
+                continue
+            thresh = -l + phi * m
+            inner = _cdf_less_than(thresh, vals_pp, cums_pp, atom_prob=p00p, atom_at_zero=True)
+            s_neg += outer * inner
+        pi[-n] = s_neg
+
+        # pi_{+n}
+        s_pos = 0.0
+        for l in range(0, n+1):
+            m = n - l
+            outer = _get(p_right, l, m)
+            if outer == 0.0:
+                continue
+            thresh =  l - phi * m
+            inner = _cdf_less_than(thresh, vals_p, cums_p, atom_prob=p00, atom_at_zero=True)
+            s_pos += outer * inner
+        pi[+n] = s_pos
+
+    return pi
+
+def choose_Ngrid_auto(theta0, theta1, phi, target_mass=0.99999, start=80, step=40, maxN=1600):
+    """
+    Increase N until both sides' total mass (grid + atom) exceeds target_mass.
+    """
+    N = start
+    while True:
+        qL, pL = q_p_left(theta0, phi, N, p00_left(theta0, phi))
+        qR, pR = q_p_right(theta1, phi, N, p00_right(theta1, phi))
+        massL = sum(pL.values()) + p00_left(theta0, phi)
+        massR = sum(pR.values()) + p00_right(theta1, phi)
+        if massL >= target_mass and massR >= target_mass:
+            return N, (qL, pL), (qR, pR)
+        N += step
+        if N > maxN:
+            return N, (qL, pL), (qR, pR)
+
+def plot_pi_range(pi_dict, nmax, outpath):
+    xs = np.arange(-nmax, nmax+1)
+    ys = np.array([pi_dict.get(int(x), 0.0) for x in xs], dtype=float)
+    plt.figure(figsize=(10,4.5))
+    plt.bar(xs, ys, width=0.8)
+    plt.xlabel(r"Relative location $n$ ( $\hat\tau - \tau = n$ )")
+    plt.ylabel(r"$\pi_n$")
+    plt.title(r"Asymptotic distribution of $\hat\tau-\tau$ (Eq. 3.1)")
+    for x,y in zip(xs, ys):
+        if y>0:
+            plt.annotate(f"{y:.3f}", (x,y), textcoords="offset points", xytext=(0,4), ha="center", fontsize=8)
+    plt.tight_layout()
+    plt.savefig(outpath, dpi=160); plt.show()
+    print(f"[saved] {outpath}")
+
+
+
+
+
+
+
+
+
 # ====================== Plot helpers & CSV ======================
 
 def annotate_points(x, y):
@@ -316,6 +439,82 @@ def save_df_csv(df, path):
     df.to_csv(path, index=False)
     print(f"[saved] {path}")
 
+def empirical_pi_distributions(T, theta0, theta1, trials=2000, n_display=10, seed=12345):
+    """
+    Build empirical histograms of n = (tau_hat - tau) for:
+      - walk estimator (Eq. 2.13) with walks centered at TRUE tau
+      - MLE estimator (argmax X_t)
+    Returns two dicts: emp_walk, emp_mle with keys in [-n_display..n_display]
+    """
+    rng = np.random.default_rng(seed)
+    counts_walk = {n: 0 for n in range(-n_display, n_display+1)}
+    counts_mle  = {n: 0 for n in range(-n_display, n_display+1)}
+
+    overflow_walk = 0
+    overflow_mle  = 0
+
+    for t in range(trials):
+        # random true tau ~ Uniform{1,...,T-1}
+        tau_true = int(rng.integers(1, T))
+        # jitter seed per trial for independence
+        R = simulate_bernoulli_sequence(T, tau_true, theta0, theta1, seed=int(rng.integers(0, 2**31-1)))
+
+        Xt = compute_Xt(R, theta0, theta1)
+        # MLE estimator
+        tau_hat_mle = tau_hat_from_Xt(Xt, tie_rule="smallest")
+
+        # Walk estimator, IMPORTANT: center at TRUE tau (not MLE)
+        left_true, right_true = build_walks_from_X(Xt, tau_true, theta0, theta1)
+        tau_hat_walk = tau_hat_from_walks(tau_true, left_true, right_true)
+
+        n_mle  = tau_hat_mle  - tau_true
+        n_walk = tau_hat_walk - tau_true
+
+        # clip into display window
+        # do NOT clip; send out-of-window mass to 'overflow' counters
+        if -n_display <= n_walk <= n_display:
+            counts_walk[n_walk] += 1
+        else:
+            overflow_walk += 1
+
+        if -n_display <= n_mle <= n_display:
+            counts_mle[n_mle] += 1
+        else:
+            overflow_mle += 1
+
+    emp_walk = {n: counts_walk[n] / trials for n in counts_walk}
+    emp_mle  = {n: counts_mle[n]  / trials for n in counts_mle}
+    tail_walk = overflow_walk / trials
+    tail_mle  = overflow_mle  / trials
+    return emp_walk, emp_mle, tail_walk, tail_mle
+
+
+
+def plot_theory_vs_empirical(pi_theory, emp_walk, emp_mle, n_display, outpath):
+    """
+    Bar plot for theory pi_n, with markers for empirical walk and MLE histograms.
+    """
+    xs = np.arange(-n_display, n_display+1)
+    y_the = np.array([pi_theory.get(int(x), 0.0) for x in xs], dtype=float)
+    y_w   = np.array([emp_walk.get(int(x), 0.0)   for x in xs], dtype=float)
+    y_m   = np.array([emp_mle.get(int(x), 0.0)    for x in xs], dtype=float)
+
+    plt.figure(figsize=(11, 5))
+    # theory as bars
+    plt.bar(xs, y_the, width=0.8, alpha=0.5, label=r"Theory $\pi_n$ (Eq. 3.1)")
+    # empirical overlays
+    plt.plot(xs, y_w, marker='o', linewidth=1.5, label=r"Empirical (walk, centered at true $\tau$)")
+    plt.plot(xs, y_m, marker='x', linewidth=1.5, label=r"Empirical (MLE)")
+
+    plt.xlabel(r"Relative location $n$  ($\hat{\tau}-\tau=n$)")
+    plt.ylabel("Probability")
+    plt.title(r"Theory vs Empirical $\pi_n$ (T fixed)")
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(outpath, dpi=160); plt.show()
+    print(f"[saved] {outpath}")
+
+
 def plot_heatmap_from_df(df, title, outpath):
     Lmax = int(df["l"].max()); Mmax = int(df["m"].max())
     G = np.zeros((Lmax + 1, Mmax + 1))
@@ -362,36 +561,49 @@ def plot_detection_comparison(Xt, tau_true, tau_hat_xt, tau_hat_walk, outdir):
 
 # ====================== Main ======================
 
-def zip_outputs(outdir, zipname=None):
+def zip_outputs(outdir, zipname=None, include_ext=None):
     """
     Zip all files in outdir into a single zip file.
     Returns the path to the zip file.
+
+    Args:
+        outdir: directory with outputs
+        zipname: optional custom name (default = all_outputs.zip)
+        include_ext: optional list of extensions (['.png','.csv']) to include only those
     """
     if zipname is None:
         zipname = os.path.join(outdir, "all_outputs.zip")
     else:
         zipname = os.path.join(outdir, zipname)
+
     with zipfile.ZipFile(zipname, 'w', zipfile.ZIP_DEFLATED) as zipf:
-        for root, dirs, files in os.walk(outdir):
+        for root, _, files in os.walk(outdir):
             for file in files:
                 if file == os.path.basename(zipname):
-                    continue  # Don't include the zip file itself
+                    continue  # skip the zip itself
+                if include_ext and not any(file.endswith(ext) for ext in include_ext):
+                    continue  # skip unwanted extensions
                 file_path = os.path.join(root, file)
                 arcname = os.path.relpath(file_path, outdir)
                 zipf.write(file_path, arcname)
+
     print(f"[saved zip] {zipname}")
     return zipname
 
+
 def main():
     # ----------- change inputs here -----------
-    T       = 120
-    tau     = 70
-    theta0  = 0.80   # theta0 > theta1 [Assumption by the paper to keep phi as positive]
+    T       = 100
+    tau     = 20
+    theta0  = 0.60   # theta0 > theta1 (for Phi>0)
     theta1  = 0.50
-    seed    = 42   #27   #42
-    Ngrid   = 25          # compute q,p on grid l+m <= Ngrid
-    tieRule = "smallest"  # 'smallest' or 'largest' max X_t
+    seed    = 50
+    Ngrid   = T          # compute q,p on grid l+m <= Ngrid
+    tieRule = "smallest"  # 'smallest' or 'largest'
     outdir  = "outputs_sec2_2"
+    n_display = 10  # For pin distribution
+    do_compare = True
+    trials_for_comaprison = 2000  #MLE comparison trials for pin
     # ------------------------------------------
 
     os.makedirs(outdir, exist_ok=True)
@@ -406,56 +618,72 @@ def main():
     tau_hat = tau_hat_from_Xt(Xt, tie_rule=tieRule)
     plot_Xt(Xt, tau, tau_hat, outdir)
 
-    # 3) Build walks from X_t differences (Eq. 2.6–2.7) and tau_hat via (2.13)
-    t_star = tau_hat_from_Xt(Xt, tie_rule=tieRule)            # center at MLE argmax
+    # 3) Random walks (Eqs. 2.6–2.7) and tau_hat via Eq. (2.13)
+    t_star = tau_hat_from_Xt(Xt, tie_rule=tieRule)  # center at MLE
     left, right = build_walks_from_X(Xt, t_star, theta0, theta1)
     tau_hat_walk = tau_hat_from_walks(t_star, left, right)
 
-    # Comparison from MLE and Random Walk CPD 
     plot_detection_comparison(Xt, tau, tau_hat, tau_hat_walk, outdir)
-
     print("\n=== Estimation summary ===")
     print(f"true τ               : {tau}")
     print(f"τ̂ from X_t          : {tau_hat}")
     print(f"τ̂ from walks (2.13)  : {tau_hat_walk}")
-    print(f"match? {'YES' if tau_hat == tau_hat_walk else 'NO'}")
 
     plot_walk(left["path"], left["M"], left["I"],
-              "Left walk W (from X_{τ-i} - X_{τ-i+1})", "walk_left.png", outdir)
+              "Left walk W", "walk_left.png", outdir)
     plot_walk(right["path"], right["M"], right["I"],
-              "Right walk W' (from X_{τ+i} - X_{τ+i-1})", "walk_right.png", outdir)
+              "Right walk W'", "walk_right.png", outdir)
 
     # 4) §2.2 constants
     Phi = phi(theta0, theta1)
     p00  = p00_left(theta0, Phi)
     p00p = p00_right(theta1, Phi)
-
     print("\n=== §2.2 constants ===")
     print(f"Φ   = {Phi:.6f}")
-    print(f"p00  (left never >0)  = {p00:.6f}   (Eq. 2.18)")
-    print(f"p00' (right never >0) = {p00p:.6f}  (Eq. 2.21)")
+    print(f"p00  = {p00:.6f} (Eq. 2.18)")
+    print(f"p00' = {p00p:.6f} (Eq. 2.21)")
 
-    # 5) Recursions for q,p on both sides (Eqs. 2.15, 2.17, 2.19, 2.20)
+    # 5) Recursions for q,p (Eqs. 2.15–2.20)
     q_left,  p_left  = q_p_left(theta0, Phi, Ngrid, p00)
     q_right, p_right = q_p_right(theta1, Phi, Ngrid, p00p)
 
-    # 6) Save PMFs and show heatmaps
+    # 6) Save PMFs + heatmaps
     df_p_left  = pmf_dict_to_df(p_left,  Phi, left_side=True)
     df_p_right = pmf_dict_to_df(p_right, Phi, left_side=False)
-
     save_df_csv(df_p_left,  os.path.join(outdir, "p_left_maxima.csv"))
     save_df_csv(df_p_right, os.path.join(outdir, "p_right_maxima.csv"))
+    plot_heatmap_from_df(df_p_left,  "Heatmap p_{l,m} left",  os.path.join(outdir, "heatmap_p_left.png"))
+    plot_heatmap_from_df(df_p_right, "Heatmap p'_{l,m} right", os.path.join(outdir, "heatmap_p_right.png"))
+    print("\nMass checks:")
+    print(f"Σ p_left  = {df_p_left['prob'].sum():.6f} + atom {p00:.6f}")
+    print(f"Σ p_right = {df_p_right['prob'].sum():.6f} + atom {p00p:.6f}")
 
-    plot_heatmap_from_df(df_p_left,  "Heatmap p_{l,m} (left maxima PMF)",  os.path.join(outdir, "heatmap_p_left.png"))
-    plot_heatmap_from_df(df_p_right, "Heatmap p'_{l,m} (right maxima PMF)", os.path.join(outdir, "heatmap_p_right.png"))
+    # 7) §3 Asymptotic distribution pi_n (Eq. 3.1)
+    
+    pi = compute_pi_distribution(Phi, p_left, p_right, p00, p00p, n_display)
+    print("\n=== π_n (Eq. 3.1) ===")
+    for n in range(-n_display, n_display+1):
+        print(f"{n:+d} : {pi.get(n, 0.0):.6f}")
+    plot_pi_range(pi, n_display, os.path.join(outdir, "pi_distribution.png"))
 
-    print("\n=== Mass on grid (excluding atom at 0) ===")
-    print(f"Σ p_left  = {df_p_left['prob'].sum():.6f};  add atom p00  = {p00:.6f}")
-    print(f"Σ p_right = {df_p_right['prob'].sum():.6f}; add atom p00' = {p00p:.6f}")
-    print(f"\nAll outputs saved in: {os.path.abspath(outdir)}")
+    # --- Optional sanity-check comparison (simulation) ---
+    if do_compare:
+        trials = trials_for_comaprison
+        emp_walk, emp_mle, tail_walk, tail_mle = empirical_pi_distributions(
+            T, theta0, theta1, trials=trials, n_display=n_display, seed=12345
+        )
+        print(f"Empirical tail mass outside [-{n_display},{n_display}]: walk={tail_walk:.3f}, mle={tail_mle:.3f}")
+        plot_theory_vs_empirical(
+            pi_theory=pi,
+            emp_walk=emp_walk,
+            emp_mle=emp_mle,
+            n_display=n_display,
+            outpath=os.path.join(outdir, f"pi_theory_vs_empirical_T{T}_trials{trials}.png")
+        )
 
-    # 7) Save all results and plots in a zip file
-    zip_outputs(outdir)
+    # 8) Zip everything
+    zip_outputs(outdir, include_ext=[".png",".csv"])
+    print(f"\nAll outputs saved and zipped in: {os.path.abspath(outdir)}")
 
 if __name__ == "__main__":
     main()
