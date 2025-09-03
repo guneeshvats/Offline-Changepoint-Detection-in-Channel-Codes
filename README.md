@@ -101,7 +101,7 @@ Approach III: CNN & transformer hybrid model
 
 1. **T = 5**, p ∈ {0.001, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05}, Codeword Length = 15: [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t5-type2-approach1)
 2. **T = 7**, p ∈ {0.001, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05}, Codeword Length = 15: [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t7-type2-approach1)
-3. **T = 10**, p ∈ {0.001, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05}, Codeword Length = 15:
+3. **T = 10**, p ∈ {0.001, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05}, Codeword Length = 15: [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t10-type2-approach1)
 4. **T = 5**, p ∈ {0.001, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05}, Codeword Length = 30:
 5. **T = 7**, p ∈ {0.001, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05}, Codeword Length = 30:
 6. **T = 10**, p ∈ {0.001, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05}, Codeword Length = 30:
