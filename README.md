@@ -99,7 +99,7 @@ Purpose: Handle the case when p is unknown at inference time.
 Approach III: CNN & transformer hybrid model
 ```
 
-1. **T = 5**, p ∈ {0.001, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05}, Codeword Length = 15: [Link](https://www.kaggle.com/code/guneeshvats/type2-cl-15-t-5)
+1. **T = 5**, p ∈ {0.001, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05}, Codeword Length = 15: [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t5-type2-approach1)
 2. **T = 7**, p ∈ {0.001, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05}, Codeword Length = 15:
 3. **T = 10**, p ∈ {0.001, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05}, Codeword Length = 15:
 4. **T = 5**, p ∈ {0.001, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05}, Codeword Length = 30:
