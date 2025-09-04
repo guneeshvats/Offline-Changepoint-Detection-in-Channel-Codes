@@ -270,86 +270,58 @@ def q_p_right(theta1, Phi, N, p00p):
 
 # ====== Section 3: Asymptotic distribution pi_n (Eq. 3.1) ======
 
-def _sorted_cdf_arrays_from_pdict(pdict, phi, which):
+def compute_pi_distribution(phi, p_left, p_right, p00, p00p, n_max, eps=1e-14):
     """
-    which = 'left'  -> order by  (-l + phi*m)   (for p_{jk} inner sums in pi_{+n})
-          = 'right' -> order by  ( l - phi*m)   (for p'_{jk} inner sums in pi_{-n})
-    Returns (vals_sorted, cums_sorted), both numpy arrays.
+    n_max is n_display
+    Literal Eq. (3.1) with explicit inner sums (no CDF precompute).
+      pi_0   = p00 * p00p
+      pi_{-n}= sum_{l=0}^n p_{l,n-l} * [ p00' * 1{thr>0} + sum_{j,k>=0} p'_{jk} * 1{ j - phi*k < thr } ]
+               where thr = -l + phi*(n-l)
+      pi_{+n}= sum_{l=0}^n p'_{l,n-l} * [ p00 * 1{thr>0} + sum_{j,k>=0} p_{jk}  * 1{ -j + phi*k < thr } ]
+               where thr =  l - phi*(n-l)
+    Notes:
+      • strict '<' as in the paper; eps only guards roundoff.
+      • sums are over the finite grid you computed (l+m<=Ngrid). Accuracy ↑ with larger Ngrid.
     """
-    import numpy as np
-    vals, probs = [], []
-    for (l, m), pr in pdict.items():
-        if pr <= 0.0:
-            continue
-        if which == 'left':
-            v = -l + phi * m
-        else:  # 'right'
-            v = l - phi * m
-        vals.append(float(v))
-        probs.append(float(pr))
-    if not vals:
-        return np.array([0.0]), np.array([0.0])
-    vals = np.asarray(vals)
-    probs = np.asarray(probs)
-    order = np.argsort(vals)
-    vals = vals[order]
-    cums = np.cumsum(probs[order])
-    return vals, cums
-
-def _cdf_less_than(thresh, vals_sorted, cums_sorted, atom_prob=0.0, atom_at_zero=True):
-    """
-    Returns sum of masses with value < thresh, plus atom at 0 if thresh>0.
-    """
-    idx = np.searchsorted(vals_sorted, thresh, side='left')
-    mass = float(cums_sorted[idx-1]) if idx > 0 else 0.0
-    if atom_at_zero and thresh > 0:
-        mass += float(atom_prob)
-    return mass
-
-def compute_pi_distribution(phi, p_left, p_right, p00, p00p, n_max):
-    """
-    Implements Eq. (3.1):
-      pi_0 = p00 * p00p
-      pi_{-n} = sum_{l=0}^n p_{l, n-l} * sum_{j,k >=0, j-phi*k < -l + phi(n-l)} p'_{jk}
-      pi_{+n} = sum_{l=0}^n p'_{l, n-l} * sum_{j,k >=0, -j+phi*k <  l - phi(n-l)} p_{jk}
-    """
-    # Precompute fast CDFs for the inner infinite sums
-    # p: order by (-j + phi*k) ; p': order by (j - phi*k)
-    vals_p, cums_p = _sorted_cdf_arrays_from_pdict(p_left,  phi, which='left')
-    vals_pp,cums_pp= _sorted_cdf_arrays_from_pdict(p_right, phi, which='right')
-
     pi = {0: float(p00 * p00p)}
 
-    # helper to get dictionary value safely
-    def _get(d, l, m):
-        return float(d.get((l, m), 0.0))
-
-    for n in range(1, n_max+1):
-        # pi_{-n}
-        s_neg = 0.0
-        for l in range(0, n+1):
+    # ---- π_{-n} side ----
+    for n in range(1, n_max + 1):
+        total_neg = 0.0
+        for l in range(0, n + 1):
             m = n - l
-            outer = _get(p_left, l, m)
+            outer = float(p_left.get((l, m), 0.0))
             if outer == 0.0:
                 continue
-            thresh = -l + phi * m
-            inner = _cdf_less_than(thresh, vals_pp, cums_pp, atom_prob=p00p, atom_at_zero=True)
-            s_neg += outer * inner
-        pi[-n] = s_neg
+            thr = -l + phi * m
+            inner = p00p if (thr > 0.0) else 0.0
+            for (j, k), pr in p_right.items():
+                if pr <= 0.0:
+                    continue
+                if (j - phi * k) < (thr - eps):   # strict
+                    inner += pr
+            total_neg += outer * inner
+        pi[-n] = total_neg
 
-        # pi_{+n}
-        s_pos = 0.0
-        for l in range(0, n+1):
+        # ---- π_{+n} side (same loop index n) ----
+        total_pos = 0.0
+        for l in range(0, n + 1):
             m = n - l
-            outer = _get(p_right, l, m)
+            outer = float(p_right.get((l, m), 0.0))
             if outer == 0.0:
                 continue
-            thresh =  l - phi * m
-            inner = _cdf_less_than(thresh, vals_p, cums_p, atom_prob=p00, atom_at_zero=True)
-            s_pos += outer * inner
-        pi[+n] = s_pos
-
+            thr = l - phi * m
+            inner = p00 if (thr > 0.0) else 0.0
+            for (j, k), pr in p_left.items():
+                if pr <= 0.0:
+                    continue
+                if (-j + phi * k) < (thr - eps):  # strict
+                    inner += pr
+            total_pos += outer * inner
+        pi[+n] = total_pos
     return pi
+
+
 
 def choose_Ngrid_auto(theta0, theta1, phi, target_mass=0.99999, start=80, step=40, maxN=1600):
     """
@@ -593,11 +565,11 @@ def zip_outputs(outdir, zipname=None, include_ext=None):
 
 def main():
     # ----------- change inputs here -----------
-    T       = 100
-    tau     = 20
-    theta0  = 0.60   # theta0 > theta1 (for Phi>0)
-    theta1  = 0.50
-    seed    = 50
+    T       = 20
+    tau     = 10
+    theta0  = 0.80   # theta0 > theta1 (for Phi>0)
+    theta1  = 0.10
+    seed    = 42
     Ngrid   = T          # compute q,p on grid l+m <= Ngrid
     tieRule = "smallest"  # 'smallest' or 'largest'
     outdir  = "outputs_sec2_2"
@@ -659,7 +631,6 @@ def main():
     print(f"Σ p_right = {df_p_right['prob'].sum():.6f} + atom {p00p:.6f}")
 
     # 7) §3 Asymptotic distribution pi_n (Eq. 3.1)
-    
     pi = compute_pi_distribution(Phi, p_left, p_right, p00, p00p, n_display)
     print("\n=== π_n (Eq. 3.1) ===")
     for n in range(-n_display, n_display+1):
