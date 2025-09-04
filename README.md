@@ -93,10 +93,9 @@ Approach II: (Only for n = 63 BCH Codes)
 #### Type II (Diverse Neural Networks), Approach I
 
 ```
-Type II: Model is trained on sequences of a fixed length but with multiple BSC parameters p ∈ {0.001, 0.005, 0.01, 0.05, 0.1} (and intermediate values below).
-Approach I: Still figuring out.
+Type II: Model is trained on sequences of a fixed length but with multiple BSC parameters p ∈ [0.001, 0.1] (21 intermediate values).
+Approach I: Same as previous approach : CNN with Residual Block and Adaptive Pooling- Just training the model with almost equam number of sequences of each p and each class. Number of classes = T+1 where T is size of the sequence - {5, 7, 10} in our case. 
 Purpose: Handle the case when p is unknown at inference time.
-Approach III: CNN & transformer hybrid model
 ```
 
 1. **T = 5**, p ∈ [0.001-0.1] (21 p values), Codeword Length = 15: [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t5-type2-approach1)
