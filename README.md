@@ -102,8 +102,8 @@ Purpose: Handle the case when p is unknown at inference time.
 2. **T = 7**, p ∈ [0.001-0.1] (21 p values), Codeword Length = 15: [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t7-type2-approach1)
 3. **T = 10**, p ∈ [0.001-0.1] (21 p values), Codeword Length = 15: [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t10-type2-approach1)
 4. **T = 5**, p ∈ [0.001-0.1] (21 p values), Codeword Length = 30: [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t10-type2-approach1)
-5. **T = 7**, p ∈ [0.001-0.1] (21 p values), Codeword Length = 30: 
-6. **T = 10**, p ∈ [0.001-0.1] (21 p values), Codeword Length = 30:
+5. **T = 7**, p ∈ [0.001-0.1] (21 p values), Codeword Length = 30: [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t7-type2-approach1)
+6. **T = 10**, p ∈ [0.001-0.1] (21 p values), Codeword Length = 30: [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t10-type2-approach1)
 
 ### Comparative Plots
 
