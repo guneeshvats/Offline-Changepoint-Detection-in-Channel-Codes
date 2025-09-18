@@ -48,13 +48,17 @@ Below is a curated (partial) list of key papers and books. The full list is main
 | 8        | **Book - 2:** Error Control Coding: Fundamentals and Applications                                                           | [View Book](https://pg024ec.wordpress.com/wp-content/uploads/2013/09/error-control-coding-by-shu-lin.pdf)           |
 | 9        | **Book - 3:** Fundamentals of Statistical Signal Processing                                                                 | [View Book]()                                                                                                       |
 | 10       | **Paper - 7:** Bayesian Approach to Inference About a Changepoint in a Sequence of Random Variables (1975)                  | [View Paper](https://www.jstor.org/stable/2335381?refreqid=fastly-default%3A81fef0d7415e79e63875176c864c8f65&seq=2) |
-| 11       | **Book - 4:** An Introduction to Signal Detection and Estimation, Vincent Poor                                              | [View Book]()                                                                                                       |
+| 11       | **Book - 4:** An Introduction to Signal Detection and Estimation, Vincent Poor                                              | [View Book]()                                                                                                       
 
 ---
 
 ## Code Progress (Processed & Unprocessed Data)
 
 This section tracks the coding and experimentation journey for this project. It documents each method tried, comparative insights, and rationale for selecting or discarding algorithms.
+
+### Data from all these Neural Networks accumulated: 
+1. Type 1 Neural Network Data - [Link](https://docs.google.com/spreadsheets/d/1HLOrZmSOm7OStBRLWJ6ru5YOI48AmIBB9Xs75WKd1sg/edit?gid=0#gid=0)
+2. Type 2 Neural Network Data - [Link](https://docs.google.com/spreadsheets/d/1vmOlatXOTn7Gp7L41P6dslZRWfLxsw89ONWBB4RB2zQ/edit?gid=0#gid=0)
 
 ### Processed Data: Bernoulli Data
 
