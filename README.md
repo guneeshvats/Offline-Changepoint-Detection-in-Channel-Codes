@@ -57,8 +57,8 @@ Below is a curated (partial) list of key papers and books. The full list is main
 This section tracks the coding and experimentation journey for this project. It documents each method tried, comparative insights, and rationale for selecting or discarding algorithms.
 
 ### Data from all these Neural Networks accumulated: 
-1. Type 1 Neural Network Data - [Link](https://docs.google.com/spreadsheets/d/1HLOrZmSOm7OStBRLWJ6ru5YOI48AmIBB9Xs75WKd1sg/edit?gid=0#gid=0)
-2. Type 2 Neural Network Data - [Link](https://docs.google.com/spreadsheets/d/1vmOlatXOTn7Gp7L41P6dslZRWfLxsw89ONWBB4RB2zQ/edit?gid=0#gid=0)
+1. Type 1 Neural Networks Data - [Link](https://docs.google.com/spreadsheets/d/1HLOrZmSOm7OStBRLWJ6ru5YOI48AmIBB9Xs75WKd1sg/edit?gid=0#gid=0)
+2. Type 2 Neural Networks Data - [Link](https://docs.google.com/spreadsheets/d/1vmOlatXOTn7Gp7L41P6dslZRWfLxsw89ONWBB4RB2zQ/edit?gid=0#gid=0)
 
 ### Processed Data: Bernoulli Data
 
@@ -189,5 +189,3 @@ Purpose: Handle the case when p is unknown at inference time.
   <img src="images/page_2.jpeg" alt="Idea_2" width="500" />
 </p>
 
-
-## Refrences 
