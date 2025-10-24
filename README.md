@@ -20,7 +20,7 @@ This repository tracks the progress of my research project on **offline changepo
 * [Research Paper Drafts](#research-paper-drafts)
 * [Code Progress (Components Summary)](#code-progress-components-summary)
 * [Extra Important Resources and Links](#extra-important-resources-and-links)
-* [Project Concept Sketches](#project-concept-sketches)
+* [Project Concept (Main Idea)](#project-concept-(Main-Idea))
 
 ---
 
@@ -136,8 +136,7 @@ Purpose: Handle the case when p is unknown at inference time.
 
 ## Research Paper Drafts
 
-1. Draft Version 0 — [Link](https://www.overleaf.com/project/68833e7c90f485946f428a2a)
-2. Other similar work's Draft — [Link](https://www.overleaf.com/project/67d121a950d4fef4b0e5c5ab)
+1. Main Draft - [Link](https://www.overleaf.com/project/67d121a950d4fef4b0e5c5ab)
 
 ---
 
@@ -156,7 +155,7 @@ Purpose: Handle the case when p is unknown at inference time.
 
 ---
 
-## Project Concept Sketches
+## Project Concept (Main Idea)
 
 **Idea of the Project:**
 
