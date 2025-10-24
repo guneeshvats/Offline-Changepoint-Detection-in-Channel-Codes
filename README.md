@@ -34,23 +34,7 @@ Offline changepoint detection is critical in identifying shifts in data behavior
 
 **Master tracking sheet - Has list of books, papers & Lecture Link (continuously updated):** [Link](https://docs.google.com/spreadsheets/d/1NH3iFS4BFo1hTYis5-IdWirP7EWbnc5gohk_1H-MvWg/edit?gid=0#gid=0)
 
-Below is a curated (partial) list of key papers and books. The full list is maintained in the sheet above.
-
-| **S.No** | **Title**                                                                                                                   | **Link**                                                                                                            |
-| -------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| 1        | **Paper - 1:** Selective Review of Offline Changepoint Detection Methods                                                    | [View Paper](https://www.sciencedirect.com/science/article/pii/S0165168419303494)                                   |
-| 2        | **Paper - 2:** Automatic Change-Point Detection in Time Series via Deep Learning (Arthi)                                    | [View Paper](https://arxiv.org/abs/2211.03860)                                                                      |
-| 3        | **Paper - 3:** Inference About the Change-Point in a Sequence of Binomial Variables (1970)                                  | [View Paper](https://www.jstor.org/stable/2334766)                                                                  |
-| 4        | **Paper - 4:** A Test for a Change in a Parameter Occurring at an Unknown Point (1955)                                      | [View Paper](https://academic.oup.com/biomet/article-abstract/42/3-4/523/296358)                                    |
-| 5        | **Paper - 5:** Nonparametric Changepoint Analysis for Bernoulli Random Variables Based on Neural Networks (Thesis)          | [View Paper](https://kluedo.ub.rptu.de/frontdoor/deliver/index/docId/2032/file/Final_Draft_October_14102008.pdf)    |
-| 6        | **Paper - 6:** A Simple cumulative sum type statistic for the change-point problem with zero-one observations (Arthi, 1980) | [View Paper](https://www.jstor.org/stable/2335319)                                                                  |
-| 7        | **Book - 1:** Detection of Abrupt Changes: Theory and Application                                                           | [Chapter 2, 3.1](https://people.irisa.fr/Michele.Basseville/kniga/kniga.pdf)                                        |
-| 8        | **Book - 2:** Error Control Coding: Fundamentals and Applications                                                           | [View Book](https://pg024ec.wordpress.com/wp-content/uploads/2013/09/error-control-coding-by-shu-lin.pdf)           |
-| 9        | **Book - 3:** Fundamentals of Statistical Signal Processing                                                                 | [View Book]()                                                                                                       |
-| 10       | **Paper - 7:** Bayesian Approach to Inference About a Changepoint in a Sequence of Random Variables (1975)                  | [View Paper](https://www.jstor.org/stable/2335381?refreqid=fastly-default%3A81fef0d7415e79e63875176c864c8f65&seq=2) |
-| 11       | **Book - 4:** An Introduction to Signal Detection and Estimation, Vincent Poor                                              | [View Book]()                                                                                                       
-
----
+**Results Data** : [Main Link](https://docs.google.com/spreadsheets/d/1HLOrZmSOm7OStBRLWJ6ru5YOI48AmIBB9Xs75WKd1sg/edit?gid=0#gid=0)
 
 ## Code Progress (Processed & Unprocessed Data)
 
