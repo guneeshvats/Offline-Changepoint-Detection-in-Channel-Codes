@@ -40,12 +40,7 @@ Offline changepoint detection is critical in identifying shifts in data behavior
 
 This section tracks the coding and experimentation journey for this project. It documents each method tried, comparative insights, and rationale for selecting or discarding algorithms.
 
-### Data from all these Neural Networks accumulated: 
-1. Type 1 Neural Networks Data - [Link](https://docs.google.com/spreadsheets/d/1HLOrZmSOm7OStBRLWJ6ru5YOI48AmIBB9Xs75WKd1sg/edit?gid=0#gid=0)
-2. Type 2 Neural Networks Data - [Link](https://docs.google.com/spreadsheets/d/1vmOlatXOTn7Gp7L41P6dslZRWfLxsw89ONWBB4RB2zQ/edit?gid=0#gid=0)
-
-### Processed Data: Bernoulli Data
-
+### Inner prod Processed BSC Data (Bernoulli Data):
 * **When Bernoulli parameters are known**
 
   1. MLE Method
@@ -56,16 +51,16 @@ This section tracks the coding and experimentation journey for this project. It 
   1. (BinSeg - Search Method) + (Bernoulli Cost Function) 
   2. (PELT - Search Method) + (Bernoulli Cost Function) 
 
-**For PMF1–PMF2:** *(On Hold for now)*
+* **For PMF1–PMF2:** *(On Hold for now)*
 
 ### Unprocessed Data: Neural Networks
 
-#### Type I (Distinct Neural Networks), Approach I
+#### Type I (Distinct Neural Networks)
 
 ```
 Type I: Neural networks are trained on sequences with a single value of p (BSC parameter).
 Approach I: 1D CNN with Residual Block and Adaptive Pooling
-Approach II: (Only for n = 63 BCH Codes)
+Approach II: (Only for n = 63 BCH Codes) - yet to be done 
 ```
 
 1. **T = 5**, p ∈ {0.01, 0.05, 0.1, 0.2}, Codeword Length = 15: [Link](https://www.kaggle.com/code/guneeshvats/cl-15-t-5-approach-1)
@@ -75,13 +70,12 @@ Approach II: (Only for n = 63 BCH Codes)
 5. **T = 7**, p ∈ {0.001, 0.005, 0.01, 0.05}, Codeword Length = 31: [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t-7-approach-1)
 6. **T = 10**, p ∈ {0.001, 0.005, 0.01, 0.05}, Codeword Length = 31: [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t-10-approach-1)
 7. **T = 5**, p ∈ {0.0001, 0.0005, 0.0010, 0.0050, 0.0100}, Codeword Length = 63: [Link](https://www.kaggle.com/code/guneeshvats/cl-63-t-5-approach-1)
-8. **T = 7**, p ∈ {0.0001, 0.0005, 0.0010, 0.0050, 0.0100}, Codeword Length = 63:
-9. **T = 10**, p ∈ {0.0001, 0.0005, 0.0010, 0.0050, 0.0100}, Codeword Length = 63:
+8. **T = 7**, p ∈ {0.0001, 0.0005, 0.0010, 0.0050, 0.0100}, Codeword Length = 63: ***yet to be done***
+9. **T = 10**, p ∈ {0.0001, 0.0005, 0.0010, 0.0050, 0.0100}, Codeword Length = 63: ***yet to be done***
 
-#### Type II (Diverse Neural Networks), Approach I
+#### Type II (Diverse Neural Networks), Approach 
 
 ```
-Type II: Model is trained on sequences of a fixed length but with multiple BSC parameters p ∈ [0.001, 0.1] (21 intermediate values).
 Approach I: Same as previous approach : CNN with Residual Block and Adaptive Pooling- Just training the model with almost equam number of sequences of each p and each class. Number of classes = T+1 where T is size of the sequence - {5, 7, 10} in our case. 
 Purpose: Handle the case when p is unknown at inference time.
 ```
@@ -93,14 +87,16 @@ Purpose: Handle the case when p is unknown at inference time.
 5. **T = 7**, p ∈ [0.001-0.1] (21 p values), Codeword Length = 30: [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t7-type2-approach1)
 6. **T = 10**, p ∈ [0.001-0.1] (21 p values), Codeword Length = 30: [Link](https://www.kaggle.com/code/guneeshvats/cl-31-t10-type2-approach1)
 
-### Comparative Plots
+### Plots we will have in the paper : 
 
 **Neural Networks (Type I & II):**
 
-1. Accuracy vs N'
-2. Accuracy vs N'
-3. Accuracy vs p
-4. Accuracy vs T
+1. Accuracy (Pd) vs N'
+2. Accuracy (Pd) vs M
+3. Accuracy (Pd) vs p (BSC(kp), BSC(up), AWGN(ksigma), AWGN(usigma),  MLE(baseline) - n=15, 31
+4. Accuracy (Pd) vs T
+5. MAE vs M
+6. Final Algo plots (unknown and known p)
 
 **Baselines vs Neural Networks:**
 
