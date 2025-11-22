@@ -5,22 +5,25 @@ import ruptures as rpt
 import pandas as pd
 
 class CostBernoulli:
-    """Bernoulli NLL with Jeffreys smoothing (alpha=beta=0.5)."""
+    """Custom cost function for Bernoulli-distributed binary sequences."""
     def fit(self, signal):
-        self.signal = np.asarray(signal, dtype=int).ravel()
+        self.signal = np.array(signal).astype(int)
         self.n = len(self.signal)
         return self
 
     def error(self, start, end):
-        n = end - start
-        if n <= 0:
-            return 0.0
         segment = self.signal[start:end]
-        n1 = int(segment.sum())
+        n = end - start
+        if n == 0:
+            return 0
+        p_hat = np.mean(segment)
+        if p_hat == 0 or p_hat == 1:
+            return 0  # No variability
+        # Jeffreys prior for stability
+        n1 = np.sum(segment)
         n0 = n - n1
-        # Jeffreys-smoothed p in (0,1)
-        p = (n1 + 0.5) / (n + 1.0)
-        return -(n1 * np.log(p) + n0 * np.log(1.0 - p))
+        p = (n1 + 0.5) / (n + 1.0)   # avoids p=0 or 1
+        return - (n1 * np.log(p_hat) + n0 * np.log(1 - p_hat))
 
     def cost(self, start, end):
         return self.error(start, end)
@@ -38,19 +41,27 @@ def smart_buffer(N):
     # else:
     #     return 10
     return 0 
+    # return 1 
 
 def detect_with_ruptures(seq):
-    """Use ruptures Binary Segmentation with custom Bernoulli cost to detect changepoint."""
+    """Use ruptures PELT with custom Bernoulli cost to detect changepoint."""
     model = CostBernoulli().fit(seq)
-    algo = rpt.Binseg(custom_cost=model).fit(seq)
-    result = algo.predict(n_bkps=1)  # since we know there's one changepoint
-    true_cps = [cp for cp in result if cp < len(seq)]
-    if true_cps:
-        return true_cps[0]
-    else:
-        return None
+    N = len(seq)
 
+    # Dynamic min_size
+    min_size = 1 if N < 10 else 3
 
+    algo = rpt.Pelt(custom_cost=model, min_size=1).fit(seq)
+
+    # BIC-style penalty
+    beta = 0.5   # beta = 0.5 
+    penalty = beta * np.log(N)
+    result = algo.predict(pen=penalty)
+    #    if the detected changepoint is at the end of the sequence, it’s removed.
+    #    That means no valid changepoint detected in that iteration.
+    true_cps = [cp for cp in result if cp < N]     
+    #    Return only the first cp from the list 
+    return true_cps[0] if true_cps else None
 
 def run_simulation_ruptures(N, q1, q2, num_iterations, max_tolerance):
     """Run simulations using ruptures and compute detection accuracy."""
@@ -91,6 +102,7 @@ def plot_accuracy(all_accuracies, max_tolerance, seq_lengths, q1, q2):
     print(table_pivot.to_string(float_format="{:.4f}".format))
     print("-" * 60)
 
+    # Plotting
     plt.figure(figsize=(10, 6))
     colors = plt.cm.plasma(np.linspace(0, 1, len(seq_lengths)))
     for idx, (accuracy_per_tol, N) in enumerate(zip(all_accuracies, seq_lengths)):
@@ -98,7 +110,7 @@ def plot_accuracy(all_accuracies, max_tolerance, seq_lengths, q1, q2):
         plt.plot(
             x_vals,
             accuracy_per_tol,
-            marker='s',  # Use squares instead of circles
+            marker='s',
             color=colors[idx],
             label=f"Length={N}"
         )
@@ -107,15 +119,11 @@ def plot_accuracy(all_accuracies, max_tolerance, seq_lengths, q1, q2):
                 x, y + 0.02, f"{y:.2f}",
                 ha='center', va='bottom', fontsize=8, color=colors[idx]
             )
-    plt.title(f"Ruptures (BinSeg) Accuracy — Bernoulli Cost\nq1={q1:.3f}, q2={q2:.3f}")
+    plt.title(f"Ruptures (PELT) Accuracy — Bernoulli Cost\nq1={q1:.3f}, q2={q2:.3f}")
     plt.xlabel("Tolerance Window")
     plt.ylabel("Detection Accuracy")
-    plt.xticks(
-        np.arange(0, max_tolerance + 1, 0.5)
-    )  # More dense x-ticks, including in-between tolerance values
-    plt.yticks(
-        np.arange(0, 1.05, 0.05)
-    )  # More dense y-ticks for accuracy
+    plt.xticks(np.arange(0, max_tolerance + 1, 0.5))
+    plt.yticks(np.arange(0, 1.05, 0.05))
     plt.grid(True, which='both', axis='both', linestyle='--', linewidth=0.5, alpha=0.7)
     plt.ylim(0, 1.05)
     plt.legend()
@@ -124,15 +132,15 @@ def plot_accuracy(all_accuracies, max_tolerance, seq_lengths, q1, q2):
 
 if __name__ == "__main__":
     # --- CONFIGURATION ---
-    epsilon = 0.01        # BSC parameter
-    w_h = 4              # Hamming weight of vector h
-    seq_lengths = [10, 15, 20, 50, 100, 200]  # List of sequence lengths to test
-    num_iterations = 1000  # Iterations per tolerance level
+    epsilon = 0.001      # BSC parameter [.001, .005, .01, .05, .08, .1, .15, .20]
+    w_h = 4             # Weight of vector h
+    seq_lengths = [50]  # List of sequence lengths to test
+    num_iterations = 5000  # Iterations per tolerance level
     max_tolerance = 10    # Maximum tolerance window
 
     # --- Compute Bernoulli parameters ---
-    q1 = 0.5 - 0.5 * ((1 - 2 * epsilon) ** w_h)
-    q2 = 0.5  # Always 0.5 after changepoint
+    q2 = 0.5 - 0.5 * ((1 - 2 * epsilon) ** w_h)
+    q1 = 0.5  # Always 0.5 after changepoint
 
     # --- Run simulation for each sequence length ---
     all_accuracies = []

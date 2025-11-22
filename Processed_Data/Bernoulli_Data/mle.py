@@ -1,32 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.stats import bernoulli
-import ruptures as rpt
 import pandas as pd
-
-class CostBernoulli:
-    """Custom cost function for Bernoulli-distributed binary sequences."""
-    def fit(self, signal):
-        self.signal = np.array(signal).astype(int)
-        self.n = len(self.signal)
-        return self
-
-    def error(self, start, end):
-        segment = self.signal[start:end]
-        n = end - start
-        if n == 0:
-            return 0
-        p_hat = np.mean(segment)
-        if p_hat == 0 or p_hat == 1:
-            return 0  # No variability
-        # Jeffreys prior for stability
-        n1 = np.sum(segment)
-        n0 = n - n1
-        p = (n1 + 0.5) / (n + 1.0)   # avoids p=0 or 1
-        return - (n1 * np.log(p_hat) + n0 * np.log(1 - p_hat))
-
-    def cost(self, start, end):
-        return self.error(start, end)
+from scipy.stats import bernoulli
 
 def generate_sequence(N, changepoint, q1, q2):
     """Generate a Bernoulli sequence with known changepoint and parameters."""
@@ -34,37 +9,33 @@ def generate_sequence(N, changepoint, q1, q2):
     after_cp = bernoulli.rvs(q2, size=N - changepoint)
     return np.concatenate([before_cp, after_cp])
 
+def log_likelihood(seq, tau, q1, q2):
+    """Compute the total log-likelihood of the sequence with a changepoint at tau."""
+    ll_before = np.sum(seq[:tau] * np.log(q1) + (1 - seq[:tau]) * np.log(1 - q1))
+    ll_after = np.sum(seq[tau:] * np.log(q2) + (1 - seq[tau:]) * np.log(1 - q2))
+    return ll_before + ll_after
+
+def detect_changepoint(seq, q1, q2, min_cp, max_cp):
+    """Detect changepoint by maximizing log-likelihood over all possible positions."""
+    max_ll = -np.inf
+    best_tau = None
+    for tau in range(min_cp, max_cp + 1):
+        ll = log_likelihood(seq, tau, q1, q2)
+        if ll > max_ll:
+            max_ll = ll
+            best_tau = tau
+    return best_tau
+
 def smart_buffer(N):
     """Choose a smart buffer based on sequence length."""
     # if N <= 30:
     #     return max(1, N // 5)
     # else:
     #     return 10
-    return 0 
-    # return 1 
+    return 0
 
-def detect_with_ruptures(seq):
-    """Use ruptures PELT with custom Bernoulli cost to detect changepoint."""
-    model = CostBernoulli().fit(seq)
-    N = len(seq)
-
-    # Dynamic min_size
-    min_size = 1 if N < 10 else 3
-
-    algo = rpt.Pelt(custom_cost=model, min_size=1).fit(seq)
-
-    # BIC-style penalty
-    beta = 0.5   # beta = 0.5 
-    penalty = beta * np.log(N)
-    result = algo.predict(pen=penalty)
-    #    if the detected changepoint is at the end of the sequence, it’s removed.
-    #    That means no valid changepoint detected in that iteration.
-    true_cps = [cp for cp in result if cp < N]     
-    #    Return only the first cp from the list 
-    return true_cps[0] if true_cps else None
-
-def run_simulation_ruptures(N, q1, q2, num_iterations, max_tolerance):
-    """Run simulations using ruptures and compute detection accuracy."""
+def run_simulation_mle(N, q1, q2, num_iterations, max_tolerance):
+    """Run simulations using MLE and compute detection accuracy."""
     buffer = smart_buffer(N)
     min_cp = buffer
     max_cp = N - buffer
@@ -78,7 +49,7 @@ def run_simulation_ruptures(N, q1, q2, num_iterations, max_tolerance):
         for _ in range(num_iterations):
             changepoint = np.random.randint(min_cp, max_cp)
             seq = generate_sequence(N, changepoint, q1, q2)
-            detected = detect_with_ruptures(seq)
+            detected = detect_changepoint(seq, q1, q2, min_cp=min_cp, max_cp=max_cp)
             if detected is not None and abs(detected - changepoint) <= tol:
                 correct_detections += 1
         accuracy = correct_detections / num_iterations
@@ -110,7 +81,7 @@ def plot_accuracy(all_accuracies, max_tolerance, seq_lengths, q1, q2):
         plt.plot(
             x_vals,
             accuracy_per_tol,
-            marker='s',
+            marker='o',
             color=colors[idx],
             label=f"Length={N}"
         )
@@ -119,7 +90,7 @@ def plot_accuracy(all_accuracies, max_tolerance, seq_lengths, q1, q2):
                 x, y + 0.02, f"{y:.2f}",
                 ha='center', va='bottom', fontsize=8, color=colors[idx]
             )
-    plt.title(f"Ruptures (PELT) Accuracy — Bernoulli Cost\nq1={q1:.3f}, q2={q2:.3f}")
+    plt.title(f"MLE Accuracy — Bernoulli Sequence\nq1={q1:.3f}, q2={q2:.3f}")
     plt.xlabel("Tolerance Window")
     plt.ylabel("Detection Accuracy")
     plt.xticks(np.arange(0, max_tolerance + 1, 0.5))
@@ -132,21 +103,21 @@ def plot_accuracy(all_accuracies, max_tolerance, seq_lengths, q1, q2):
 
 if __name__ == "__main__":
     # --- CONFIGURATION ---
-    epsilon = 0.01        # BSC parameter
-    w_h = 4              # Hamming weight of vector h
-    seq_lengths = [10, 15, 20, 50, 100, 150, 200]  # List of sequence lengths to test
-    num_iterations = 1000  # Iterations per tolerance level
-    max_tolerance = 10    # Maximum tolerance window
+    epsilon = 0.025      # BSC parameter [.001, .005, .01, .05, .08, .1, .15, .20]
+    w_h = 4             # Weight of vector h
+    seq_lengths = [5]# 7, 10, 15, 20, 50]  # List of sequence lengths to test
+    num_iterations = 10000  # Iterations per tolerance level
+    max_tolerance = 5     # Max tolerance window
 
-    # --- Compute Bernoulli parameters ---
-    q1 = 0.5 - 0.5 * ((1 - 2 * epsilon) ** w_h)
-    q2 = 0.5  # Always 0.5 after changepoint
+    # --- COMPUTE q1 AND q2 ---
+    q2 = 0.5 - 0.5 * ((1 - 2 * epsilon) ** w_h)
+    q1 = 0.5  # Always 0.5 after changepoint
 
-    # --- Run simulation for each sequence length ---
+    # --- RUN SIMULATION FOR EACH SEQUENCE LENGTH ---
     all_accuracies = []
     for N in seq_lengths:
-        accuracy_per_tol = run_simulation_ruptures(N, q1, q2, num_iterations, max_tolerance)
+        accuracy_per_tol = run_simulation_mle(N, q1, q2, num_iterations, max_tolerance)
         all_accuracies.append(accuracy_per_tol)
 
-    # --- Plot the results ---
+    # --- PLOT ---
     plot_accuracy(all_accuracies, max_tolerance, seq_lengths, q1, q2)
