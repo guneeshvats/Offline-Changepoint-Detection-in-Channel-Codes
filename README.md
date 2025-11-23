@@ -19,10 +19,55 @@ This repository includes:
 
 ---
 
-# Installation
+## Installation
 
 ```bash
 git clone https://github.com/guneeshvats/Offline-Changepoint-Detection-in-Channel-Codes.git
 cd Offline-Changepoint-Detection-in-Channel-Codes
 pip install -r requirements.txt
+```
+
+## Directory Structure 
+```
+Offline-Changepoint-Detection-in-Channel-Codes/
+│
+├── Data_Generation/                         # MATLAB scripts for creating simulated codeword pools
+│   ├── BCH+AWGN_Channel/                    # BCH over AWGN (generates CSV pools)
+│   ├── BCH+BSC_Channel/                     # BCH over BSC (generates CSV pools)
+│   ├── LDPC+AWGN_Channel/                   # LDPC over AWGN
+│   └── LDPC+BSC_Channel/                    # LDPC over BSC
+│
+├── Deep_Learning_Approach/                  # Jupyter notebooks for training & evaluation
+│   ├── BCH+BSC_known_p/                     # Known–p models
+│   │   ├── n=15/                            # Contains T={5,7,10} trained models + experiments
+│   │   └── n=31/                            # Contains T={5,7,10} trained models + experiments
+│   └── BCH+BSC_unknown_p/                   # Unknown–p Type-II models (trained on multi-p data)
+│       ├── n=15/
+│       └── n=31/
+│
+├── Hinkley_Implementation/                  # Pure statistical CPD (Bernoulli MLE + πₙ recursion)
+│   ├── code.py                              # Implements MLE, recursive πₙ, CUSUM, etc.
+│   └── README.md
+│
+├── Processed_Data/
+│   ├── Bernoulli_Data/                      # Ruptures baselines: BinSeg, PELT, CUSUM, MLE
+│   └── PMF1_PMF2/                           # Probability mass visualizations and utilities
+│
+├── final_algorithm_known_p.py               # ***Main unified algorithm (known BSC-p)***
+├── final_algorithm_unknown_p.py             # Unified pipeline for unknown-p inference
+│
+├── Find_min_weight_h_BCH_n15_n31.m          # MATLAB search for low-weight h (BCH)
+├── Find_min_weight_h_LDPC_n648.m            # MATLAB search for low-weight h (LDPC)
+│
+├── requirements.txt
+└── README.md
+```
+
+## Quick Guide
+
+1. To run the final algorithm → use : final_algorithm_known_p.py or final_algorithm_unknown_p.py
+2. To train CNN models → open notebooks under Deep_Learning_Approach
+3. To regenerate data → run scripts under Data_Generation
+4. To study the math → read Hinkley_Implementation/code.py
+
 
