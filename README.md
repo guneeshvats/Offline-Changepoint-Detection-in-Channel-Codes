@@ -28,7 +28,7 @@ pip install -r requirements.txt
 ```
 
 ## Directory Structure 
-```
+```python
 Offline-Changepoint-Detection-in-Channel-Codes/
 │
 ├── Data_Generation/                         # MATLAB scripts for creating simulated codeword pools
