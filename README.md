@@ -143,6 +143,51 @@ Refined NN τ̂ (count)     : 498
 [saved] result_final_algorithm.csv
 ```
 
+### Understanding the Required Inputs
+
+The parameters in the `USER INPUTS` section correspond directly to the components of the CPD pipeline and must be provided by the user before running the algorithm:
+
+- **Channel Codeword Pools (CSV_C1, CSV_C2)**  
+  These CSV files contain rows of binary codewords (0/1) generated from the MATLAB scripts under `Data_Generation/`.  
+  For a given `(n, k)` BCH or LDPC code and a chosen channel (BSC or AWGN), run the appropriate `.m` script to create the CSV pools.  
+  C1 corresponds to the code used *before* the changepoint and C2 corresponds to the code *after* the changepoint.
+
+- **Sequence Length (M) and True Changepoint (TAU_TRUE)**  
+  These decide how long the synthetic sequence is and where the true changepoint occurs.  
+  If you want to run the algorithm on **a single custom sequence**, set `MC_ENABLE = False` and simply choose any value of `TAU_TRUE` (it is used only for reporting).  
+  If you want **Monte-Carlo experiments**, set `MC_ENABLE = True` and specify how many random trials using `MC_NR`.
+
+- **Projection Vector h**  
+  This is a binary vector of length `n` that must satisfy  
+  \( h \in C_2^\perp \setminus C_1^\perp \).  
+  For BCH (n = 15, 31) or LDPC (n = 648), use the MATLAB scripts  
+  `Find_min_weight_h_BCH_n15_n31.m` or `Find_min_weight_h_LDPC_n648.m`  
+  to search for a **low-weight** valid `h`.  
+  A well-chosen `h` strongly improves the statistical discriminability in the Bernoulli projection.
+
+- **Neural Model Path (MODEL_PATH)**  
+  The neural refinement stage uses a TorchScript `.pt` file trained on the appropriate code length `n`, window size `T`, and (for known-p) the BSC parameter `p`.  
+  To obtain this file, open the notebooks inside `Deep_Learning_Approach/`, run the training cells, and export the trained model.  
+  The `.pt` file from the notebook is exactly what you provide here.
+
+- **BSC Parameter p (Known-p Pipeline Only)**  
+  This is the true BSC crossover probability used both in data generation and in computing the Bernoulli parameters \( \theta_1, \theta_2 \).  
+  For the unknown-p model, **this parameter is not required** at inference.
+
+- **Confidence Parameter α**  
+  α (typically 0.90 or 0.95) determines how much probability mass of the πₙ distribution to keep when selecting the refinement window around the coarse MLE estimate.  
+  Larger α → larger window → more context for the neural network.
+
+- **πₙ Recursion Hyperparameters (PIN_NGRID, PIN_NDISPLAY, VIEW_HALF)**  
+  These influence the numerical resolution of the lattice used in computing the Hinkley recursion πₙ.  
+  Users typically do not change these unless experimenting with the statistical stage.
+
+Together, these inputs fully define the pipeline: **data source → statistical coarse estimate → πₙ window → neural refinement**.
+
+
+
+
+
 ### Output Files
 
 `result_final_algorithm.csv` contains:
