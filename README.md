@@ -28,7 +28,7 @@ pip install -r requirements.txt
 ```
 
 ## Directory Structure 
-```python
+```bash
 Offline-Changepoint-Detection-in-Channel-Codes/
 │
 ├── Data_Generation/                         # MATLAB scripts for creating simulated codeword pools
@@ -86,7 +86,7 @@ The script final_algorithm_known_p.py implements the entire pipeline:
 ### 1. Configure Inputs (Inside the Script)
 
 Open final_algorithm_known_p.py and edit the block:
-```
+```python
 # ========================= USER INPUTS ===========================
 
 # 1) Channel codeword pools (CSV files with rows of 0/1)
