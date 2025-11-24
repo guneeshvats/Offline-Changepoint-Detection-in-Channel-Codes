@@ -1,6 +1,6 @@
 # Offline Changepoint Detection in Channel Codes
 
-This repository contains the full implementation for **offline changepoint detection (CPD)** in **binary channel-coded communication streams** (BCH / LDPC) over BSC and AWGN channels.  
+This repository contains the full implementation for **offline changepoint detection (CPD)** in **binary channel-coded communication streams** (BCH) over BSC and AWGN channels.  
 The core idea is a **two-stage pipeline**:
 
 1. **Statistical Coarse MLE Stage**  
