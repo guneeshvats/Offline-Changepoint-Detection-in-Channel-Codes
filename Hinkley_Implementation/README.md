@@ -12,23 +12,13 @@ Implementation Results Walkthrough :
 
 ### Step 1 : Computing Likelihood - Xt and finding tau estimate from Xt
 
-Plot : 
-
 ### Step 2 : Computing Random Walks W and W'
-
-Plot : 
 
 ### Step 3 : Computing p00 and p'00 
 
-Values : 
-
 ### Step 4 : Computing ql,m - pl,m ; q'l,m - p'l,m
 
-Plot : 
-
-### Step 5 : Computing the pi0 
-
-Plot/Values : 
+### Step 5 : Computing the pi0 and then pin and pi-n
 
 
 
